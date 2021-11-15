@@ -14,6 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lspconfig'
 
 Plug 'mhartington/oceanic-next'
+"Plug 'nvim-neorg/neorg'
 call plug#end()
 
 colorscheme OceanicNext
@@ -31,3 +32,6 @@ EOF
 nnoremap <silent> gR <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.rename()<cr>
+
+autocmd BufWritePost ~/.local/share/chezmoi/* silent! !chezmoi apply
+autocmd BufWritePost /tmp/chezmoi-edit*       silent! !chezmoi apply
