@@ -2,9 +2,36 @@ let mapleader = " "
 noremap <leader>ev <cmd>e $MYVIMRC<cr>
 inoremap jk <esc>
 inoremap kj <esc>
+nnoremap <leader><leader> <C-^>
 
+" Navigate quickfix list and location list
 nnoremap <a-j> <cmd>cnext<cr>
 nnoremap <a-k> <cmd>cprev<cr>
+nnoremap <c-j> <cmd>lnext<cr>
+nnoremap <c-k> <cmd>lprev<cr>
+
+" Stamping, overwrite paste and sub in selection
+nnoremap S "_ciw<C-r>"<Esc>
+xnoremap S "_dP
+nnoremap <leader>R R^R0<Esc>
+xnoremap s :s/\%V
+
+" makes * and # work in visual mode ("very nomagic")
+function! g:VSetSearch(cmdtype)
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+xnoremap * :<c-u>call g:VSetSearch('/')<cr>/<c-r>=@/<cr><cr>
+xnoremap # :<c-u>call g:VSetSearch('?')<cr>?<c-r>=@/<cr><cr>
+nnoremap <leader>g :Ggrep <c-r><c-w>
+nnoremap <silent> <leader>/ <cmd>nohlsearch<CR>
+
+" Repeat the last : command
+nnoremap , @:
+xnoremap , @:
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
