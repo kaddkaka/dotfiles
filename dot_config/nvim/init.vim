@@ -93,6 +93,8 @@ nnoremap <leader>t1 <cmd>lua vim.lsp.diagnostic.set_loclist()<cr>
 autocmd BufWritePost ~/.local/share/chezmoi/* silent! !chezmoi apply
 autocmd BufWritePost /tmp/chezmoi-edit*       silent! !chezmoi apply
 
+autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+
 "set number              " show line numbers
 set cursorline          " highlight current line
 set scrolloff=3         " number of screen lines to show around the cursor
@@ -104,6 +106,11 @@ set lazyredraw          " Makes applying macros faster
 set ignorecase
 set smartcase           " ignore case when pattern is lowercase only
 set gdefault            " for :substitute, use the /g flag by default
+
+nnoremap <Up>    :resize +1<CR>
+nnoremap <Down>  :resize -1<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
 
 "au TermOpen term://* startinsert
 "nnoremap <leader>ut <cmd>vsp term://tig %:p<cr>
