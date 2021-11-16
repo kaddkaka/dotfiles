@@ -34,11 +34,24 @@ nnoremap , @:
 xnoremap , @:
 
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/vim-easy-align'
+"Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'neovim/nvim-lspconfig'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'hotwatermorning/auto-git-diff'
+let auto_git_diff_show_window_at_right = 1
 
 Plug 'mhartington/oceanic-next'
 "Plug 'nvim-neorg/neorg'
@@ -52,13 +65,30 @@ map <leader>F <cmd>Files<CR>
 map <leader>l <cmd>Files %:h<CR>
 map <leader>L <cmd>Lines<CR>
 
-lua << EOF
+lua <<EOF
+require('telescope').setup { extensions = { fzf = {
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true,    -- override the file sorter
+} } }
+require('telescope').load_extension('fzf')
+require("trouble").setup { position = "right" }
 require'lspconfig'.pylsp.setup{}
+require'nvim-treesitter.configs'.setup {
+  highlight = {enable=true, disable={"vim"}},
+  playground = {enable=true},
+}
 EOF
 
 nnoremap <silent> gR <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.rename()<cr>
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.rename()<cr>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<cr>
+
+" Treesitter: Toggle playground, check for parser
+nnoremap <leader>tp <cmd>TSPlaygroundToggle<cr>
+nnoremap <leader>tc <cmd>lua print(require'nvim-treesitter.parsers'.has_parser())<cr>
+nnoremap <leader>tt <cmd>TroubleToggle<cr>
+nnoremap <leader>t1 <cmd>lua vim.lsp.diagnostic.set_loclist()<cr>
 
 autocmd BufWritePost ~/.local/share/chezmoi/* silent! !chezmoi apply
 autocmd BufWritePost /tmp/chezmoi-edit*       silent! !chezmoi apply
