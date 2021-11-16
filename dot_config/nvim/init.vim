@@ -62,3 +62,20 @@ nnoremap <silent> gd <cmd>lua vim.lsp.buf.rename()<cr>
 
 autocmd BufWritePost ~/.local/share/chezmoi/* silent! !chezmoi apply
 autocmd BufWritePost /tmp/chezmoi-edit*       silent! !chezmoi apply
+
+"set number              " show line numbers
+set cursorline          " highlight current line
+set scrolloff=3         " number of screen lines to show around the cursor
+set sidescrolloff=2     " min # of columns to keep left/right of cursor
+set cmdheight=2         " cmdheight=2 helps avoid 'Press ENTER...' prompts
+set nowrap              " don't wrap lines
+set diffopt=filler,vertical
+set lazyredraw          " Makes applying macros faster
+set ignorecase
+set smartcase           " ignore case when pattern is lowercase only
+set gdefault            " for :substitute, use the /g flag by default
+
+"au TermOpen term://* startinsert
+"nnoremap <leader>ut <cmd>vsp term://tig %:p<cr>
+"nnoremap <leader>ul :vsp term://tig -L<c-r>=line(".")<cr>,+1:%:p
+"nnoremap <leader>uk <cmd>vsp term://kak %:p<cr>
