@@ -111,6 +111,10 @@ nnoremap <Up>    :resize +1<CR>
 nnoremap <Down>  :resize -1<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
+nnoremap <s-Up>    :resize +10<CR>
+nnoremap <s-Down>  :resize -10<CR>
+nnoremap <s-Left>  :vertical resize +20<CR>
+nnoremap <s-Right> :vertical resize -20<CR>
 
 "au TermOpen term://* startinsert
 "nnoremap <leader>ut <cmd>vsp term://tig %:p<cr>
