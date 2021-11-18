@@ -27,7 +27,7 @@ endfunction
 xnoremap * :<c-u>call g:VSetSearch('/')<cr>/<c-r>=@/<cr><cr>
 xnoremap # :<c-u>call g:VSetSearch('?')<cr>?<c-r>=@/<cr><cr>
 nnoremap <leader>g :Ggrep <c-r><c-w>
-nnoremap <silent> <leader>/ <cmd>nohlsearch<CR>
+nnoremap <silent> <leader>/ <cmd>nohlsearch<cr>
 
 " Repeat the last : command
 nnoremap , @:
@@ -59,11 +59,11 @@ call plug#end()
 
 colorscheme OceanicNext
 
-map <leader>b <cmd>Buffers<CR>  
-map <leader>f <cmd>GFiles<CR>  
-map <leader>F <cmd>Files<CR>  
-map <leader>l <cmd>Files %:h<CR>
-map <leader>L <cmd>Lines<CR>
+map <leader>b <cmd>Buffers<cr>
+map <leader>f <cmd>GFiles<cr>
+map <leader>F <cmd>Files<cr>
+map <leader>l <cmd>Files %:h<cr>
+map <leader>L <cmd>Lines<cr>
 
 lua <<EOF
 require('telescope').setup { extensions = { fzf = {
@@ -95,26 +95,37 @@ autocmd BufWritePost /tmp/chezmoi-edit*       silent! !chezmoi apply
 
 autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
 
+" Trim trailing Whitespaces on save
+function! TrimWhitespace()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfunction
+autocmd BufWritePre      *.py,*.v,*.hh,*.cc,*.sv,*.svh,*.asm,* :call TrimWhitespace()
+
 "set number              " show line numbers
 set cursorline          " highlight current line
 set scrolloff=3         " number of screen lines to show around the cursor
 set sidescrolloff=2     " min # of columns to keep left/right of cursor
 set cmdheight=2         " cmdheight=2 helps avoid 'Press ENTER...' prompts
 set nowrap              " don't wrap lines
-set diffopt=filler,vertical
+set diffopt=filler,vertical  " options for diff mode
 set lazyredraw          " Makes applying macros faster
 set ignorecase
 set smartcase           " ignore case when pattern is lowercase only
 set gdefault            " for :substitute, use the /g flag by default
+"set grepprg=rg\ --vimgrep  " program for the :grep command
+"set directory=/tmp,~/tmp,.,/var/tmp  " directories for swap file
 
-nnoremap <Up>    :resize +1<CR>
-nnoremap <Down>  :resize -1<CR>
-nnoremap <Left>  :vertical resize +2<CR>
-nnoremap <Right> :vertical resize -2<CR>
-nnoremap <s-Up>    :resize +10<CR>
-nnoremap <s-Down>  :resize -10<CR>
-nnoremap <s-Left>  :vertical resize +20<CR>
-nnoremap <s-Right> :vertical resize -20<CR>
+nnoremap <Up>    :resize +1<cr>
+nnoremap <Down>  :resize -1<cr>
+nnoremap <Left>  :vertical resize +2<cr>
+nnoremap <Right> :vertical resize -2<cr>
+nnoremap <s-Up>    :resize +10<cr>
+nnoremap <s-Down>  :resize -10<cr>
+nnoremap <s-Left>  :vertical resize +20<cr>
+nnoremap <s-Right> :vertical resize -20<cr>
 
 "au TermOpen term://* startinsert
 "nnoremap <leader>ut <cmd>vsp term://tig %:p<cr>
