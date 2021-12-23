@@ -58,6 +58,8 @@ Plug 'https://github.com/tommcdo/vim-fugitive-blame-ext'
 Plug 'hotwatermorning/auto-git-diff'
 let auto_git_diff_show_window_at_right = 1
 
+Plug 'alaviss/nim.nvim'
+
 Plug 'mhartington/oceanic-next'
 "Plug 'nvim-neorg/neorg'
 call plug#end()
@@ -78,12 +80,14 @@ require('telescope').setup { extensions = { fzf = {
 } } }
 require('telescope').load_extension('fzf')
 require("trouble").setup { position = "right" }
+
 require'lspconfig'.pylsp.setup { settings = { pylsp = { plugins = {
   pylint = { enabled = true },
 } } } }
 require'lspconfig'.clangd.setup{cmd = {"clangd",
                                        "--background-index",
                                        "--cross-file-rename"}}
+require'lspconfig'.nimls.setup{}
 
 require('lint').linters_by_ft = {
   yaml = {'yamllint',}
