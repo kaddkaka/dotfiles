@@ -1,6 +1,7 @@
 fish_add_path ~/.local/bin
+fish_add_path ~/.nimble/bin
 
-set -Ux EDITOR nvim
+set -gx EDITOR nvim
 
 abbr -g rf 'source ~/.config/fish/config.fish'
 
