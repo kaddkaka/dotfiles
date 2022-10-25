@@ -1,5 +1,6 @@
 let mapleader = " "
 noremap <leader>ev <cmd>e $MYVIMRC<cr>
+noremap <leader>eb <cmd>e ~/.bashrc<cr>
 inoremap jk <esc>
 inoremap kj <esc>
 nnoremap <leader><leader> <C-^>
@@ -36,9 +37,15 @@ nnoremap , @:
 xnoremap , @:
 
 call plug#begin('~/.vim/plugged')
-"Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'https://github.com/tommcdo/vim-fugitive-blame-ext'
+Plug 'hotwatermorning/auto-git-diff'
+let auto_git_diff_show_window_at_right = 1
+Plug 'mhartington/oceanic-next'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'alaviss/nim.nvim'
@@ -53,14 +60,6 @@ Plug 'nvim-treesitter/playground'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
 
-Plug 'tpope/vim-fugitive'
-Plug 'https://github.com/tommcdo/vim-fugitive-blame-ext'
-Plug 'hotwatermorning/auto-git-diff'
-let auto_git_diff_show_window_at_right = 1
-
-Plug 'alaviss/nim.nvim'
-
-Plug 'mhartington/oceanic-next'
 "Plug 'nvim-neorg/neorg'
 call plug#end()
 
@@ -73,36 +72,19 @@ map <leader>l <cmd>Files %:h<cr>
 map <leader>L <cmd>Lines<cr>
 map <leader>T <cmd>Tags<cr>
 
-lua <<EOF
-require('telescope').setup { extensions = { fzf = {
-  override_generic_sorter = true, -- override the generic sorter
-  override_file_sorter = true,    -- override the file sorter
-} } }
-require('telescope').load_extension('fzf')
-require("trouble").setup { position = "right" }
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
-require'lspconfig'.pylsp.setup { settings = { pylsp = { plugins = {
-  pylint = { enabled = true },
-} } } }
-require'lspconfig'.clangd.setup{cmd = {"clangd",
-                                       "--background-index",
-                                       "--cross-file-rename"}}
-require'lspconfig'.nimls.setup{}
+nnoremap <a-l> <c-w>l
+nnoremap <a-h> <c-w>h
 
-require('lint').linters_by_ft = {
-  yaml = {'yamllint',}
-}
-
-require'nvim-treesitter.configs'.setup {
-  highlight = {enable=true, disable={"vim"}},
-  playground = {enable=true},
-}
-EOF
+"telescope, lsp, treesitter, etc...
+lua require('plugins')
 
 nnoremap <silent> gR <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
-nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<cr>
+nnoremap <silent> gA <cmd>lua vim.lsp.buf.code_action()<cr>
 
 " Treesitter: Toggle playground, check for parser
 nnoremap <leader>tp <cmd>TSPlaygroundToggle<cr>
