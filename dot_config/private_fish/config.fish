@@ -1,5 +1,6 @@
 fish_add_path ~/.local/bin
 fish_add_path ~/.nimble/bin
+fish_add_path ~/.cargo/bin
 
 set -gx EDITOR nvim
 
