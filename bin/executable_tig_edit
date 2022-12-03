@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Editing: $1"
+GIT_EDITOR='sed -i 1s/pick/edit/' git rebase -i "$1"~
+git jump diff HEAD~
+git commit -a --fixup=HEAD --no-edit
