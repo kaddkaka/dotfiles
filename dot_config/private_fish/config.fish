@@ -3,6 +3,10 @@ fish_add_path ~/.nimble/bin
 
 set -gx EDITOR nvim
 
+function fish_user_key_bindings
+    bind \ca 'fg'
+end
+
 abbr -g rf 'source ~/.config/fish/config.fish'
 
 abbr -g g    'git'
