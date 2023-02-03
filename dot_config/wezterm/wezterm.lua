@@ -6,7 +6,7 @@ return {
   mouse_bindings = {
     {
       event = { Down = { streak = 3, button = 'Left' } },
-      action = w.action.SelectTextAtMouseCursor 'SemanticZone',
+      action = a.SelectTextAtMouseCursor 'SemanticZone',
     },
   },
   keys = {
