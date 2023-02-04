@@ -3,6 +3,7 @@ local a = w.action
 
 return {
   harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
+  adjust_window_size_when_changing_font_size = false,
   mouse_bindings = {
     {
       event = { Down = { streak = 3, button = 'Left' } },
