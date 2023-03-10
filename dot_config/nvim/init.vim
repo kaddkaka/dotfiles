@@ -69,6 +69,8 @@ Plug 'numToStr/Navigator.nvim'
 lua require("Navigator").setup()
 nnoremap <a-h> <cmd>NavigatorLeft<cr>
 nnoremap <a-l> <cmd>NavigatorRight<cr>
+nnoremap <a-left>  <cmd>NavigatorLeft<cr>
+nnoremap <a-right> <cmd>NavigatorRight<cr>
 
 call plug#end()
 

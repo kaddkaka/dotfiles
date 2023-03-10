@@ -33,10 +33,12 @@ return {
     { key = "UpArrow",   mods = "SHIFT", action = a.ScrollToPrompt(-1) },
     { key = "DownArrow", mods = "SHIFT", action = a.ScrollToPrompt( 1) },
 
-    { key = 'o', mods = "ALT",       action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
-    { key = 'h', mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-left') },
-    { key = 'l', mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-right') },
-    { key = "h", mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Left", 10 } },
-    { key = "l", mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Right", 10 } },
+    { key = 'o',          mods = "ALT",       action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
+    { key = 'h',          mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-left') },
+    { key = 'l',          mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-right') },
+    { key = 'LeftArrow',  mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-left') },
+    { key = 'RightArror', mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-right') },
+    { key = "h",          mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Left", 10 } },
+    { key = "l",          mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Right", 10 } },
   },
 }
