@@ -42,10 +42,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-fugitive'
-Plug 'https://github.com/tommcdo/vim-fugitive-blame-ext'
-Plug 'hotwatermorning/auto-git-diff'
-let auto_git_diff_show_window_at_right = 1
+
 Plug 'mhartington/oceanic-next'
+colorscheme OceanicNext
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'alaviss/nim.nvim'
@@ -56,11 +55,15 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/nvim-treesitter-context'
+
+Plug 'michaeljsmith/vim-indent-object'
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
 
-"Plug 'nvim-neorg/neorg'
+Plug 'jbyuki/venn.nvim'
+Plug 'powerman/vim-plugin-AnsiEsc'
 
 Plug 'numToStr/Navigator.nvim'
 lua require("Navigator").setup()
@@ -69,7 +72,12 @@ nnoremap <a-l> <cmd>NavigatorRight<cr>
 
 call plug#end()
 
-colorscheme OceanicNext
+"Plug 'inkarkat/vim-JumpToVerticalOccurrence'
+"Plug 'tommcdo/vim-fugitive-blame-ext'
+"Plug 'hotwatermorning/auto-git-diff'
+"let auto_git_diff_show_window_at_right = 1
+"Plug 'nvim-neorg/neorg'
+"Plug 'folke/twilight.nvim'
 
 map <leader>b <cmd>Buffers<cr>
 map <leader>f <cmd>GFiles<cr>
