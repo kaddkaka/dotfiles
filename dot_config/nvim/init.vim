@@ -61,6 +61,12 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
 
 "Plug 'nvim-neorg/neorg'
+
+Plug 'numToStr/Navigator.nvim'
+lua require("Navigator").setup()
+nnoremap <a-h> <cmd>NavigatorLeft<cr>
+nnoremap <a-l> <cmd>NavigatorRight<cr>
+
 call plug#end()
 
 colorscheme OceanicNext
