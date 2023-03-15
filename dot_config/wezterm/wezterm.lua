@@ -37,7 +37,7 @@ return {
     { key = 'h',          mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-left') },
     { key = 'l',          mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-right') },
     { key = 'LeftArrow',  mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-left') },
-    { key = 'RightArror', mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-right') },
+    { key = 'RightArrow', mods = 'ALT',       action = a.EmitEvent('ActivatePaneDirection-right') },
     { key = "h",          mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Left", 10 } },
     { key = "l",          mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Right", 10 } },
   },
