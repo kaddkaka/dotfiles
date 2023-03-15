@@ -10,6 +10,7 @@ end
 
 abbr -g rf 'source ~/.config/fish/config.fish'
 
+abbr -g gg   'git grep'
 abbr -g gf   'git fetch'
 abbr -g gd   'git diff'
 abbr -g gr   'git rebase'
@@ -25,6 +26,10 @@ abbr -g gm   'git merge'
 abbr -g gp   'git push'
 abbr -g gpf  'git push --force-with-lease'
 abbr -g gcd  'cd (git rev-parse --show-toplevel)'
+
+abbr -g gjg   'git jump grep'
+abbr -g gjd   'git jump diff'
+abbr -g gjm   'git jump merge'
 
 abbr -g chd  'chezmoi diff'
 abbr -g chcd 'chezmoi cd'
