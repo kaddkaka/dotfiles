@@ -11,6 +11,7 @@ local lsp = require('lspconfig')
 lsp.pylsp.setup { settings = { pylsp = { plugins = { pylint = { enabled = true }}}}}
 lsp.clangd.setup { cmd = {"clangd", "--background-index", "--cross-file-rename"}}
 lsp.nimls.setup{}
+lsp.rust_analyzer.setup{}
 
 require('lint').linters_by_ft = {
   yaml = {'yamllint',}
