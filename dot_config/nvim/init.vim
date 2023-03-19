@@ -13,8 +13,6 @@ nnoremap <c-k> <cmd>lprev<cr>
 
 " Stamping, overwrite paste and sub in selection
 nnoremap S "_ciw<c-r>"<esc>
-xnoremap S "_c<c-r>"<esc>
-nnoremap <leader>R R<c-r>0<esc>
 xnoremap s :s/\%V
 
 " makes * and # work in visual mode ("very nomagic")
@@ -34,7 +32,6 @@ nnoremap gb :Git blame<cr>
 
 " Repeat the last : command
 nnoremap , @:
-xnoremap , @:
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
@@ -44,7 +41,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 
 Plug 'mhartington/oceanic-next'
-colorscheme OceanicNext
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'alaviss/nim.nvim'
@@ -66,13 +62,15 @@ Plug 'jbyuki/venn.nvim'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
 Plug 'numToStr/Navigator.nvim'
+call plug#end()
+
+colorscheme OceanicNext
+
 lua require("Navigator").setup()
 nnoremap <a-h> <cmd>NavigatorLeft<cr>
 nnoremap <a-l> <cmd>NavigatorRight<cr>
 nnoremap <a-left>  <cmd>NavigatorLeft<cr>
 nnoremap <a-right> <cmd>NavigatorRight<cr>
-
-call plug#end()
 
 "Plug 'inkarkat/vim-JumpToVerticalOccurrence'
 "Plug 'tommcdo/vim-fugitive-blame-ext'
@@ -90,9 +88,6 @@ map <leader>T <cmd>Tags<cr>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-nnoremap <a-l> <c-w>l
-nnoremap <a-h> <c-w>h
 
 "telescope, lsp, treesitter, etc...
 lua require('plugins')
@@ -127,7 +122,6 @@ augroup init_group
   autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
-"set number              " show line numbers
 set cursorline          " highlight current line
 set scrolloff=3         " number of screen lines to show around the cursor
 set sidescrolloff=2     " min # of columns to keep left/right of cursor
@@ -139,6 +133,7 @@ set ignorecase
 set smartcase           " ignore case when pattern is lowercase only
 set gdefault            " for :substitute, use the /g flag by default
 set expandtab           " replace tabs with spaces
+set mouse=
 "set list listchars=tab:>-,trail:.
 "set grepprg=rg\ --vimgrep  " program for the :grep command
 "set directory=/tmp,~/tmp,.,/var/tmp  " directories for swap file
