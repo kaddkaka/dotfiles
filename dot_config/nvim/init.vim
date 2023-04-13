@@ -86,6 +86,11 @@ map <leader>l <cmd>Files %:h<cr>
 map <leader>L <cmd>Lines<cr>
 map <leader>T <cmd>Tags<cr>
 
+augroup netrw
+  autocmd!
+  autocmd FileType netrw nmap <buffer> <leader>l <cmd>execute("Files " .. g:netrw_dirhist_0)<cr>
+augroup END
+
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
