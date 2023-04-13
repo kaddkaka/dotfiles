@@ -110,8 +110,8 @@ nnoremap <leader>tl <cmd>lua vim.lsp.diagnostic.set_loclist()<cr>
 
 augroup init_group
   autocmd!
-  autocmd BufWritePost ~/.local/share/chezmoi/* silent! !chezmoi apply
-  autocmd BufWritePost /tmp/chezmoi-edit*       silent! !chezmoi apply
+  autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path <afile>
+  autocmd BufWritePost /tmp/chezmoi-edit* ! chezmoi apply <afile>:s?/tmp/chezmoi-edit\d*/??:S
 
   autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
 
