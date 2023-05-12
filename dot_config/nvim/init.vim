@@ -39,7 +39,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-fugitive'
 
-Plug 'mhartington/oceanic-next'
+Plug 'rebelot/kanagawa.nvim'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'alaviss/nim.nvim'
@@ -63,7 +63,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'numToStr/Navigator.nvim'
 call plug#end()
 
-colorscheme OceanicNext
+colorscheme kanagawa
 
 lua require("Navigator").setup()
 nnoremap <a-h> <cmd>NavigatorLeft<cr>
