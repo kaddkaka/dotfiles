@@ -1,6 +1,5 @@
 local w = require 'wezterm'
 local a = w.action
-local cb = w.action_callback
 
 local function is_inside_vim(pane)
   local tty = pane:get_tty_name()
@@ -10,17 +9,22 @@ local function is_inside_vim(pane)
     { 'sh', '-c',
       'ps -o state= -o comm= -t' .. w.shell_quote_arg(tty) .. ' | ' ..
       'grep -iqE \'^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$\'' }
-      --'grep -q \'S nvim\'' }
 
   return success
 end
 
-local function Navigate(win, pane, key, dir)
-  if is_inside_vim(pane) then
-    win:perform_action(a.SendKey {key = key, mods = 'ALT'}, pane)
-  else
-    win:perform_action(a.ActivatePaneDirection(dir), pane)
+local function is_outside_vim(pane) return not is_inside_vim(pane) end
+
+local function bind_if(cond, key, mods, action)
+  local function callback (win, pane)
+    if cond(pane) then
+      win:perform_action(action, pane)
+    else
+      win:perform_action(a.SendKey({key=key, mods=mods}), pane)
+    end
   end
+
+  return {key=key, mods=mods, action=w.action_callback(callback)}
 end
 
 return {
@@ -35,12 +39,14 @@ return {
     },
   },
   keys = {
-    { key = "UpArrow",   mods = "SHIFT", action = a.ScrollToPrompt(-1) },
-    { key = "DownArrow", mods = "SHIFT", action = a.ScrollToPrompt( 1) },
+    --{ key = "UpArrow",   mods = "SHIFT", action = a.ScrollToPrompt(-1) },
+    --{ key = "DownArrow", mods = "SHIFT", action = a.ScrollToPrompt( 1) },
+    bind_if(is_outside_vim, 'UpArrow', 'SHIFT', a.ScrollToPrompt(-1)),
+    bind_if(is_outside_vim, 'DownArrow', 'SHIFT', a.ScrollToPrompt(1)),
 
-    { key = 'o', mods = "ALT", action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
-    { key = 'h', mods = 'ALT', action = cb(function(win, pane) Navigate(win, pane, 'h', 'Left')  end) },
-    { key = 'l', mods = 'ALT', action = cb(function(win, pane) Navigate(win, pane, 'l', 'Right') end) },
+    { key = 'o', mods = "ALT", action = a.SplitHorizontal({ domain = 'CurrentPaneDomain' }) },
+    bind_if(is_outside_vim, 'h', 'ALT', a.ActivatePaneDirection('Left')),
+    bind_if(is_outside_vim, 'l', 'ALT', a.ActivatePaneDirection('Right')),
 
     { key = "h", mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Left",  10 } },
     { key = "l", mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Right", 10 } },
