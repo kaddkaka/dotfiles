@@ -1,6 +1,6 @@
 let mapleader = " "
-noremap <leader>ev <cmd>e $MYVIMRC<cr>
-noremap <leader>eb <cmd>e ~/.bashrc<cr>
+"noremap <leader>e <cmd>e $MYVIMRC<cr>
+map <leader>e <cmd>Files $CHEZMOI_HOME<cr>
 inoremap jk <esc>
 inoremap kj <esc>
 nnoremap <leader><leader> <C-^>
@@ -111,10 +111,7 @@ nnoremap <leader>tl <cmd>lua vim.lsp.diagnostic.set_loclist()<cr>
 augroup init_group
   autocmd!
   autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path <afile>
-  autocmd BufWritePost /tmp/chezmoi-edit* ! chezmoi apply <afile>:s?/tmp/chezmoi-edit\d*/??:S
-
   autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
-
   autocmd BufWritePost,BufNewFile,BufRead *.yaml lua require('lint').try_lint()
 
   " Trim trailing Whitespaces on save
