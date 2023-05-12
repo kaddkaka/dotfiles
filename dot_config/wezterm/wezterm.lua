@@ -27,6 +27,14 @@ local function bind_if(cond, key, mods, action)
   return {key=key, mods=mods, action=w.action_callback(callback)}
 end
 
+local function toggle(key, value)
+  return w.action_callback( function (window, pane)
+    local o = window:get_config_overrides() or {}
+    if o[key] then o[key] = nil else o[key] = value end
+    window:set_config_overrides(o)
+  end )
+end
+
 return {
   harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
   window_decorations = "RESIZE",
@@ -50,5 +58,10 @@ return {
 
     { key = "h", mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Left",  10 } },
     { key = "l", mods = "ALT|SHIFT", action = a.AdjustPaneSize { "Right", 10 } },
+
+    { key = "p", mods = "ALT", action = toggle('color_scheme', 'Atelier Dune Light (base16)') },
   },
+
+  color_scheme = 'nord',
+  force_reverse_video_cursor = true,
 }
