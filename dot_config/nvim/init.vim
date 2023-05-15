@@ -71,6 +71,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'numToStr/Navigator.nvim'
 Plug 'habamax/vim-rst'
 
+Plug 'jpalardy/vim-slime'
 call plug#end()
 
 colorscheme kanagawa
@@ -109,6 +110,8 @@ nmap ga <Plug>(EasyAlign)
 
 lua require('plugins')
 runtime 'mediatek.vim'
+
+let g:slime_target = "wezterm"
 
 "Creating some new text objects:
 onoremap <silent> iT :<C-U>normal! vit<space>kojV<CR>
