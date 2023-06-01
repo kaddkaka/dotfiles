@@ -26,6 +26,8 @@ export CHEZMOI_HOME="$XDG_DATA_HOME/chezmoi"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+bind -x '"\C-a":"fg"'
+
 HISTCONTROL=ignoreboth
 HISTSIZE=2000
 HISTFILESIZE=4000
@@ -34,6 +36,7 @@ shopt -s histappend
 shopt -s checkwinsize
 shopt -s globstar
 
+alias ls='ls --color=auto'
 alias gf='git fetch'
 alias gs='git status'
 alias gd='git diff'
