@@ -148,7 +148,8 @@ augroup init_group
   autocmd FileType xml,cpp,vim,lua setlocal shiftwidth=2
   autocmd FileType systemverilog setlocal shiftwidth=3
 
-  autocmd FileType groovy syntax sync fromstart
+  autocmd FileType groovy,rst syntax sync fromstart
+  autocmd FileType rst,markdown setlocal textwidth=80
 
   " Trim trailing Whitespaces on save
   function! TrimWhitespace()
