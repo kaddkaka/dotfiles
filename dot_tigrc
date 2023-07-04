@@ -1,7 +1,8 @@
-bind main R !git rebase -i %(commit) --keep-empty
-bind diff R !git rebase -i %(commit) --keep-empty
-bind main S !git rebase -i %(commit) --autosquash
-bind diff S !git rebase -i %(commit) --autosquash
+bind main R !git rebase -i %(commit)~ --keep-empty
+bind diff R !git rebase -i %(commit)~ --keep-empty
+bind main S !git rebase -i %(commit)~ --autosquash
+bind diff S !git rebase -i %(commit)~ --autosquash
+
 bind main C !clang_format_branch.py %(commit)
 
 bind main ! !?git revert %(commit)
@@ -11,7 +12,7 @@ bind generic E <tig_edit %(commit)
 
 bind generic <Ctrl-f> !git commit --fixup %(commit)
 
-bind main <Ctrl-o> !git checkout %(commit)
+bind main <Ctrl-o> !git switch -d %(commit)
 
 set main-view-author-width = 20
 set ignore-case = smart-case
