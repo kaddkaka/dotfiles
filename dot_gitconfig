@@ -1,0 +1,62 @@
+[user]
+     name = David Moberg
+     email = kaddkaka@gmail.com
+[core]
+     editor = nvim
+[diff]
+     tool = meld
+     colorMoved = zebra
+     colorMovedWS = ignore-space-at-eol,ignore-space-change
+[difftool]
+     prompt = false
+[alias]
+     # Some simple but finger-saving aliases
+     st = status -uno
+     chp = cherry-pick
+     ls = ls-files
+     ppush   = push --set-upstream origin HEAD
+
+     bp      = merge-base HEAD origin/master
+     mb      = merge-base HEAD origin/master
+     sb      = git rebase -i $(merge-base HEAD origin/master)
+
+     ref     = reflog --date=iso
+     bsearch = !git branch -a | fzf
+     what    = !gitwhat
+     clear   = !git ls-files --others --exclude-standard | xargs rm -r
+     wd = diff --word-diff-regex="[^[:space:],]+|[,]+" --word-diff=color
+
+     # A dense log with cool graph!
+     short = log --graph --decorate --oneline
+     long = log --name-status
+
+     new = !sh -c 'git log --graph --stat=200,200 $1@{1}..$1@{0} "$@"'
+
+     histrem = !git fetch --all && git for-each-ref refs/remotes --color=always --sort=committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(color:cyan)%(authorname)%(color:reset) - %(contents:subject) - (%(color:green)%(committerdate:relative)%(color:reset))' | grep -v JENKINS
+     aliases = config --get-regexp '^alias\\.'
+[color]
+     ui = auto
+[push]
+     default = upstream
+[clangFormat]
+     binary = clang-format
+     extensions = c,h,m,mm,cc,cp,cpp,c++,cxx,hpp,proto,protodevel,js,ts,hh
+[log]
+     date = local
+[rebase]
+     stat = true
+[merge]
+     tool = kdiff3
+     ff = false
+     conflictStyle = diff3
+[advice]
+     detachedHead = false
+[worktree]
+     guessRemote = true
+[credential]
+     helper = /usr/local/share/gcm-core/git-credential-manager-core
+     credentialStore = cache
+[http]
+     sslVerify = false
+[credential "https://dev.azure.com"]
+     useHttpPath = true
