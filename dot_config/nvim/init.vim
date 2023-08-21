@@ -86,9 +86,6 @@ nnoremap <a-right> <cmd>NavigatorRight<cr>
 lua require("pretty-fold").setup()
 
 "Plug 'inkarkat/vim-JumpToVerticalOccurrence'
-"Plug 'tommcdo/vim-fugitive-blame-ext'
-"Plug 'hotwatermorning/auto-git-diff'
-"let auto_git_diff_show_window_at_right = 1
 "Plug 'MunifTanjim/nui.nvim'
 "Plug 'rcarriga/nvim-notify'
 "Plug 'folke/noice.nvim'
