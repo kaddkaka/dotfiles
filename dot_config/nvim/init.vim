@@ -142,7 +142,7 @@ nnoremap <leader>tl <cmd>lua vim.lsp.diagnostic.set_loclist()<cr>
 
 augroup init_group
   autocmd!
-  autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path <afile>
+  autocmd BufWritePost ~/.local/share/chezmoi/[^.]* ! chezmoi apply --source-path <afile>
   autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
   autocmd BufWritePost,BufNewFile,BufRead *.yaml lua require('lint').try_lint()
   "autocmd BufWritePost,BufNewFile,BufRead, bash lua require('lint').try_lint()
