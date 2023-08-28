@@ -108,6 +108,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 lua require('plugins')
+runtime 'mediatek.vim'
 
 "Creating some new text objects:
 onoremap <silent> iT :<C-U>normal! vit<space>kojV<CR>
