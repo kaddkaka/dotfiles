@@ -109,6 +109,15 @@ nmap ga <Plug>(EasyAlign)
 
 lua require('plugins')
 
+"Creating some new text objects:
+onoremap <silent> iT :<C-U>normal! vit<space>kojV<CR>
+onoremap h[ :<c-u>normal! m'vi[``<cr>
+onoremap l[ :<c-u>normal! m'vi[o``<cr>
+onoremap h{ :<c-u>normal! m'vi{``<cr>
+onoremap l{ :<c-u>normal! m'vi{o``<cr>
+onoremap h( :<c-u>normal! m'vi(``<cr>
+onoremap l( :<c-u>normal! m'vi(o``<cr>
+
 "let g:fzf_action = {'ctrl-q': 'fill_quickfix'}
 
 nnoremap <silent> gR <cmd>lua vim.lsp.buf.references()<cr>
