@@ -156,6 +156,9 @@ augroup init_group
   autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
+" Command to refresh quickfix list:
+"call setqflist(map(getqflist(), 'extend(v:val, {"text":get(getbufline(v:val.bufnr, v:val.lnum),0)})'))
+
 set cursorline          " highlight current line
 set scrolloff=3         " number of screen lines to show around the cursor
 set sidescrolloff=2     " min # of columns to keep left/right of cursor
@@ -179,6 +182,8 @@ nnoremap <s-Up>    :resize +10<cr>
 nnoremap <s-Down>  :resize -10<cr>
 nnoremap <s-Left>  :vertical resize +20<cr>
 nnoremap <s-Right> :vertical resize -20<cr>
+nnoremap <c-Left>  :vertical resize +1<cr>
+nnoremap <c-Right> :vertical resize -1<cr>
 
 "au TermOpen term://* startinsert
 "nnoremap <leader>ut <cmd>vsp term://tig %:p<cr>
@@ -219,3 +224,11 @@ function! s:Matchdo(start_line, end_line, command) abort
 
   call winrestview(saved_view)
 endfunction
+
+" Sorting examples:
+" stable sort on column 3
+"   :!sort -k3,3 -s
+" sort on difference between field 2 and 1
+"   :%!awk ' BEGIN{OFS="\t"} { print $2-$1, $0 | "sort -nr | uniq -f5" }'
+" sort on length of line
+"   :%!awk '{print length(), $0 | "sort -n | cut -d\\  -f2-" }'
