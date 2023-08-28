@@ -7,8 +7,7 @@ bind main C !clang_format_branch.py %(commit)
 bind main ! !?git revert %(commit)
 bind diff ! !?git revert %(commit)
 
-bind main E <tig_edit %(commit)
-bind diff E <tig_edit %(commit)
+bind generic E <tig_edit %(commit)
 
 bind generic <Ctrl-f> !git commit --fixup %(commit)
 
