@@ -1,5 +1,9 @@
 #!/bin/bash
+
 echo "Editing: $1"
-GIT_EDITOR='sed -i 1s/pick/edit/' git rebase -i "$1"~
-git jump diff HEAD~
+
+# Start a rebase from the first parent (~) of commit "$1"
+# "Auto-answer" the interactive prompt with sed
+GIT_EDITOR='sed -i 1s/pick/edit/' git rebase -i "$1"~ || exit 1
+git jump diff HEAD~ || git rebase --abort && exit 1
 git commit -a --fixup=HEAD --no-edit
