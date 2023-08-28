@@ -18,8 +18,23 @@ require('lint').linters_by_ft = {
 }
 
 require('nvim-treesitter.configs').setup {
-  highlight = {enable=true, disable={"vim"}},
+  highlight = {enable=true, disable={"vim", "verilog"}},
   playground = {enable=true},
 }
+
+--require'treesitter-context'.setup {
+--  max_lines = 4,
+--  patterns = {
+--    default = {
+--      'class',
+--      'function',
+--    },
+--    cpp = {
+--      'class_specifier',
+--      'struct_specifier',
+--    },
+--    verilog = { 'function_declaration' },
+--  },
+--}
 
 require("trouble").setup { position = "right" }
