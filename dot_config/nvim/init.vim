@@ -95,6 +95,7 @@ map <leader>f <cmd>GFiles<cr>
 map <leader>F <cmd>Files<cr>
 map <leader>l <cmd>Files %:h<cr>
 map <leader>L <cmd>Lines<cr>
+map <leader>t <cmd>BTags<cr>
 map <leader>T <cmd>Tags<cr>
 
 augroup netrw
@@ -102,15 +103,21 @@ augroup netrw
   autocmd FileType netrw nmap <buffer> <leader>l <cmd>execute("Files " .. g:netrw_dirhist_0)<cr>
 augroup END
 
+"vim-easy-align, see :h EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 lua require('plugins')
 
+"let g:fzf_action = {'ctrl-q': 'fill_quickfix'}
+
 nnoremap <silent> gR <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> gA <cmd>lua vim.lsp.buf.code_action()<cr>
+xnoremap <silent> gA <cmd>lua vim.lsp.buf.range_code_action()<cr>
+nnoremap <silent> gk <cmd>lua vim.lsp.buf.hover()<cr>
+nnoremap <silent> gt <cmd>lua vim.lsp.buf.type_definition()<cr>
 
 " Treesitter: Toggle playground, check for parser
 nnoremap <leader>tp <cmd>TSPlaygroundToggle<cr>
