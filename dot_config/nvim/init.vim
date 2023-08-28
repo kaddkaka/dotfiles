@@ -141,6 +141,11 @@ augroup init_group
   autocmd BufWritePost,BufNewFile,BufRead *.yaml lua require('lint').try_lint()
   "autocmd BufWritePost,BufNewFile,BufRead, bash lua require('lint').try_lint()
 
+  autocmd FileType xml,cpp,vim,lua setlocal shiftwidth=2
+  autocmd FileType systemverilog setlocal shiftwidth=3
+
+  autocmd FileType groovy syntax sync fromstart
+
   " Trim trailing Whitespaces on save
   function! TrimWhitespace()
       let l = line(".")
@@ -167,6 +172,8 @@ set mouse=
 "set list listchars=tab:>-,trail:.
 "set grepprg=rg\ --vimgrep  " program for the :grep command
 "set directory=/tmp,~/tmp,.,/var/tmp  " directories for swap file
+set textwidth=100
+set formatoptions-=t    " Don't automatically format code on insert
 
 nnoremap <s-Up>    :resize +10<cr>
 nnoremap <s-Down>  :resize -10<cr>
