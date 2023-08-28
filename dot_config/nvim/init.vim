@@ -41,7 +41,9 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 
 Plug 'rebelot/kanagawa.nvim'
 
@@ -61,15 +63,19 @@ Plug 'michaeljsmith/vim-indent-object'
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
+Plug 'folke/twilight.nvim'
 
 Plug 'jbyuki/venn.nvim'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
 Plug 'numToStr/Navigator.nvim'
+Plug 'habamax/vim-rst'
+
 call plug#end()
 
 colorscheme kanagawa
 
+lua require("twilight").setup()
 lua require("Navigator").setup()
 nnoremap <a-h> <cmd>NavigatorLeft<cr>
 nnoremap <a-l> <cmd>NavigatorRight<cr>
@@ -80,8 +86,9 @@ nnoremap <a-right> <cmd>NavigatorRight<cr>
 "Plug 'tommcdo/vim-fugitive-blame-ext'
 "Plug 'hotwatermorning/auto-git-diff'
 "let auto_git_diff_show_window_at_right = 1
-"Plug 'nvim-neorg/neorg'
-"Plug 'folke/twilight.nvim'
+"Plug 'MunifTanjim/nui.nvim'
+"Plug 'rcarriga/nvim-notify'
+"Plug 'folke/noice.nvim'
 
 map <leader>b <cmd>Buffers<cr>
 map <leader>f <cmd>GFiles<cr>
