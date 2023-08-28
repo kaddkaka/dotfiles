@@ -1,5 +1,5 @@
 let mapleader = " "
-"noremap <leader>e <cmd>e $MYVIMRC<cr>
+
 map <leader>e <cmd>Files $CHEZMOI_HOME<cr>
 inoremap jk <esc>
 inoremap kj <esc>
@@ -12,6 +12,8 @@ nnoremap <a-k> <cmd>cprev<cr>
 " Stamping and substitute inside selection
 nnoremap S "_ciw<c-r>"<esc>
 xnoremap s :s/\%V
+nmap <leader>p pgVr<space>
+nmap <leader>P PgVr<space>
 
 " makes * and # act on whole selection in visual mode ("very nomagic")
 " allows to easily find weird strings like /*foo*/
@@ -25,12 +27,14 @@ xnoremap * :<c-u>call g:VSetSearch('/')<cr>/<c-r>=@/<cr><cr>
 xnoremap # :<c-u>call g:VSetSearch('?')<cr>?<c-r>=@/<cr><cr>
 
 nnoremap <leader>g :Ggrep -q <c-r><c-w>
+nnoremap <leader>G :Ggrep -q <c-r><c-w> -- <c-r>%
 nnoremap <leader>/ <cmd>nohlsearch<cr>
 nnoremap gV `[v`]
 nnoremap gb :Git blame<cr>
 
 " Repeat the last : command
 nnoremap , @:
+xnoremap , @:
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
