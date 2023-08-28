@@ -8,13 +8,27 @@ ts.setup { extensions = { fzf = {
 ts.load_extension('fzf')
 
 local lsp = require('lspconfig')
+-- This is coupled with config files:
+--   ~/.config/pycodestyle
+--   ~/.config/pylintrc
 lsp.pylsp.setup { settings = { pylsp = { plugins = { pylint = { enabled = true }}}}}
-lsp.clangd.setup { cmd = {"clangd", "--background-index", "--cross-file-rename"}}
+lsp.clangd.setup { cmd = {"clangd", "--clang-tidy", "--background-index", "--cross-file-rename"}}
 lsp.nimls.setup{}
-lsp.rust_analyzer.setup{}
+require'lspconfig'.rust_analyzer.setup { settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy",
+                extraArgs = {
+                    "--target-dir", "$HOME/.cache/rust_analyzer",
+                    "--",
+                    "-W", "clippy::pedantic",
+                }, }}}}
 
 require('lint').linters_by_ft = {
   yaml = {'yamllint',}
+  --c = {'comotidy',},
+  --c = {'clangtidy',},
+  --bash = {'shellcheck',},
 }
 
 require('nvim-treesitter.configs').setup {
