@@ -72,6 +72,7 @@ Plug 'numToStr/Navigator.nvim'
 Plug 'habamax/vim-rst'
 
 Plug 'jpalardy/vim-slime'
+Plug 'anuvyklack/pretty-fold.nvim'
 call plug#end()
 
 colorscheme kanagawa
@@ -82,6 +83,7 @@ nnoremap <a-h> <cmd>NavigatorLeft<cr>
 nnoremap <a-l> <cmd>NavigatorRight<cr>
 nnoremap <a-left>  <cmd>NavigatorLeft<cr>
 nnoremap <a-right> <cmd>NavigatorRight<cr>
+lua require("pretty-fold").setup()
 
 "Plug 'inkarkat/vim-JumpToVerticalOccurrence'
 "Plug 'tommcdo/vim-fugitive-blame-ext'
