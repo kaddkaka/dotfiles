@@ -36,7 +36,7 @@ nnoremap gb :Git blame<cr>
 nnoremap , @:
 xnoremap , @:
 
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -122,8 +122,9 @@ onoremap h( :<c-u>normal! m'vi(``<cr>
 onoremap l( :<c-u>normal! m'vi(o``<cr>
 
 "let g:fzf_action = {'ctrl-q': 'fill_quickfix'}
+let g:fzf_preview_window = ['hidden', 'ctrl-o']
 
-nnoremap <silent> gR <cmd>lua vim.lsp.buf.references()<cr>
+nnoremap <silent> <leader>r <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> gA <cmd>lua vim.lsp.buf.code_action()<cr>

@@ -32,7 +32,7 @@ require('lint').linters_by_ft = {
 }
 
 require('nvim-treesitter.configs').setup {
-  highlight = {enable=true, disable={"vim", "verilog"}},
+  highlight = {enable=true, disable={"verilog"}},
   playground = {enable=true},
 }
 
