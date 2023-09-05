@@ -19,6 +19,7 @@ bind main <Ctrl-o> !git switch -d %(commit)
 
 set main-view-author-width = 20
 set ignore-case = smart-case
+set show-untracked = no
 
 # Toggle commit hash with these settings or X when in main-view
 #set main-view-id = yes
