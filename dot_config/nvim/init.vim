@@ -36,6 +36,9 @@ nnoremap gb <cmd>Git blame<cr>
 nnoremap , @:
 xnoremap , @:
 
+" Repeat last change in all of file (similar to g&)
+nnoremap g. :%s//^R./&<esc>
+
 call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
