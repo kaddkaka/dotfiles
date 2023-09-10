@@ -123,10 +123,6 @@ eval "$(zoxide init bash)"
 export XDG_DATA_HOME="$HOME/.local/share"
 export CHEZMOI_HOME="$XDG_DATA_HOME/chezmoi"
 
-export HISTFILE_DIR="${XDG_STATE_HOME:-${HOME}/.local/state}/bash"
-mkdir -p "${HISTFILE_DIR}"
-export HISTFILE="${HISTFILE_DIR}/history"
-
 export XDG_CONFIG_HOME="$HOME/.config"
 source "$XDG_CONFIG_HOME/wezterm/shell-integration.sh"  # This makes my prompt very slow
 source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
