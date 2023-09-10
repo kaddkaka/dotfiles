@@ -411,11 +411,11 @@ __wezterm_set_user_var() {
 # command provided by wezterm if wezterm is installed, but falls
 # back to a simple printf command otherwise.
 __wezterm_osc7() {
-  if hash wezterm 2>/dev/null ; then
-    wezterm set-working-directory 2>/dev/null && return 0
-    # If the command failed (perhaps the installed wezterm
-    # is too old?) then fall back to the simple version below.
-  fi
+  # if hash wezterm 2>/dev/null ; then
+  #   wezterm set-working-directory 2>/dev/null && return 0
+  #   # If the command failed (perhaps the installed wezterm
+  #   # is too old?) then fall back to the simple version below.
+  # fi
   printf "\033]7;file://%s%s\033\\" "${HOSTNAME}" "${PWD}"
 }
 
@@ -498,15 +498,15 @@ if [[ -z "${WEZTERM_SHELL_SKIP_SEMANTIC_ZONES}" ]]; then
   fi
 fi
 
-if [[ -z "${WEZTERM_SHELL_SKIP_USER_VARS}" ]]; then
-  if [[ -n "$BLE_VERSION" ]]; then
-    blehook PRECMD+=__wezterm_user_vars_precmd
-    blehook PREEXEC+=__wezterm_user_vars_preexec
-  else
-    precmd_functions+=(__wezterm_user_vars_precmd)
-    preexec_functions+=(__wezterm_user_vars_preexec)
-  fi
-fi
+#if [[ -z "${WEZTERM_SHELL_SKIP_USER_VARS}" ]]; then
+#  if [[ -n "$BLE_VERSION" ]]; then
+#    blehook PRECMD+=__wezterm_user_vars_precmd
+#    blehook PREEXEC+=__wezterm_user_vars_preexec
+#  else
+#    precmd_functions+=(__wezterm_user_vars_precmd)
+#    preexec_functions+=(__wezterm_user_vars_preexec)
+#  fi
+#fi
 
 if [[ -z "${WEZTERM_SHELL_SKIP_CWD}" ]] ; then
   if [[ -n "$BLE_VERSION" ]]; then
