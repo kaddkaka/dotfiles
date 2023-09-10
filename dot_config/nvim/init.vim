@@ -69,7 +69,7 @@ Plug 'folke/trouble.nvim'
 Plug 'folke/twilight.nvim'
 
 Plug 'jbyuki/venn.nvim'
-Plug 'powerman/vim-plugin-AnsiEsc'
+"Plug 'powerman/vim-plugin-AnsiEsc' Adds annoying bindings (starting w. <leader>)
 
 Plug 'numToStr/Navigator.nvim'
 Plug 'habamax/vim-rst'
