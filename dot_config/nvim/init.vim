@@ -30,7 +30,7 @@ nnoremap <leader>g :Ggrep -q <c-r><c-w>
 nnoremap <leader>G :Ggrep -q <c-r><c-w> -- <c-r>%
 nnoremap <leader>/ <cmd>nohlsearch<cr>
 nnoremap gV `[v`]
-nnoremap gb :Git blame<cr>
+nnoremap gb <cmd>Git blame<cr>
 
 " Repeat the last : command
 nnoremap , @:
