@@ -96,10 +96,12 @@ fi
 # startup vim with the locations in quickfix list:
 # Example: git ls-files -z *.py | twogrep property memoize | nvim -c 'cbuffer!'
 twogrep() {
-    xargs -0 awk '/'"$1"'/ {b=NR+1} NR==b && /'"$2"'/ {print FILENAME "|" FNR "|" $0} '
+  xargs -0 awk '/'"$1"'/ {b=NR+1} NR==b && /'"$2"'/ {print FILENAME "|" FNR "|" $0} '
 }
 
-ggblame() { git grep -n "$@" | while IFS=: read i j k; do git blame -L $j,$j $i; done }
+ggblame() {
+  git grep -n "$@" | while IFS=: read i j k; do git blame -L $j,$j $i; done
+}
 
 # Use clang as default c/c++ compiler
 export CC=clang
