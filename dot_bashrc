@@ -92,12 +92,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-vimgrep() {
-  cmd=grep
-  tty -s && cmd="git $cmd -n"
-  $cmd "$@" | tr - : | nvim -c 'cbuffer!' -c 'bd! #';
-}
-
 # Find all lines with "property" followed with a line with "memoize" and
 # startup vim with the locations in quickfix list:
 # Example: git ls-files -z *.py | twogrep property memoize | nvim -c 'cbuffer!'
