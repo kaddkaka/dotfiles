@@ -49,6 +49,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 
 Plug 'rebelot/kanagawa.nvim'
+Plug 'https://github.com/protesilaos/tempus-themes'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'alaviss/nim.nvim'
