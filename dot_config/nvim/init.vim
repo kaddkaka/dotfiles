@@ -1,9 +1,8 @@
 let mapleader = " "
 
+" Quick way to edit config files
 map <leader>e <cmd>Files $CHEZMOI_HOME<cr>
-inoremap jk <esc>
 inoremap kj <esc>
-nnoremap <leader><leader> <C-^>
 
 " Navigate quickfix list
 nnoremap <a-j> <cmd>cnext<cr>
@@ -129,12 +128,12 @@ onoremap l( :<c-u>normal! m'vi(o``<cr>
 let g:fzf_preview_window = ['hidden', 'ctrl-o']
 
 nnoremap <silent> <leader>r <cmd>lua vim.lsp.buf.references()<cr>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.rename()<cr>
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
-nnoremap <silent> gA <cmd>lua vim.lsp.buf.code_action()<cr>
-xnoremap <silent> gA <cmd>lua vim.lsp.buf.range_code_action()<cr>
-nnoremap <silent> gk <cmd>lua vim.lsp.buf.hover()<cr>
-nnoremap <silent> gt <cmd>lua vim.lsp.buf.type_definition()<cr>
+nnoremap <silent> <leader>R <cmd>lua vim.lsp.buf.rename()<cr>
+nnoremap <silent> <leader>d <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap <silent> <leader>a <cmd>lua vim.lsp.buf.code_action()<cr>
+xnoremap <silent> <leader>A <cmd>lua vim.lsp.buf.range_code_action()<cr>
+nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.hover()<cr>
+nnoremap <silent> <leader>t <cmd>lua vim.lsp.buf.type_definition()<cr>
 
 " Treesitter: Toggle playground, check for parser
 nnoremap <leader>tp <cmd>TSPlaygroundToggle<cr>
@@ -177,14 +176,12 @@ set diffopt=filler,vertical  " options for diff mode
 set lazyredraw          " Makes applying macros faster
 set ignorecase
 set smartcase           " ignore case when pattern is lowercase only
-set gdefault            " for :substitute, use the /g flag by default
 set expandtab           " replace tabs with spaces
-set mouse=
-
-"set list listchars=tab:>-,trail:.
-"set grepprg=rg\ --vimgrep  " program for the :grep command
-"set directory=/tmp,~/tmp,.,/var/tmp  " directories for swap file
 set textwidth=100
+set list listchars=tab:>-,trail:.
+
+set gdefault            " for :substitute, use the /g flag by default
+set mouse=
 set formatoptions-=t    " Don't automatically format code on insert
 
 nnoremap <s-Up>    :resize +10<cr>
