@@ -23,6 +23,7 @@ colorscheme kanagawa
 
 " fugitive settings
 nnoremap gb <cmd>Git blame<cr>
+nnoremap <leader>g :Ggrep -q <c-r><c-w>
 
 " fzf settings
 nnoremap <leader>b <cmd>Buffers<cr>
