@@ -191,11 +191,6 @@ nnoremap <s-Right> :vertical resize -20<cr>
 nnoremap <c-Left>  :vertical resize +1<cr>
 nnoremap <c-Right> :vertical resize -1<cr>
 
-"au TermOpen term://* startinsert
-"nnoremap <leader>ut <cmd>vsp term://tig %:p<cr>
-"nnoremap <leader>ul :vsp term://tig -L<c-r>=line(".")<cr>,+1:%:p
-"nnoremap <leader>uk <cmd>vsp term://kak %:p<cr>
-
 " Sorting examples:
 " stable sort on column 3
 "   :!sort -k3,3 -s
