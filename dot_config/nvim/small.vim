@@ -1,5 +1,9 @@
 let mapleader = " "
 
+" Quick way to edit config file(s)
+map <leader>e <cmd>e $MYVIMRC<cr>
+
+" Convenient way to exit insert mode
 inoremap kj <esc>
 
 " Navigate quickfix list
@@ -18,7 +22,7 @@ call plug#end()
 colorscheme kanagawa
 
 " fugitive settings
-nnoremap gb :Git blame<cr>
+nnoremap gb <cmd>Git blame<cr>
 
 " fzf settings
 nnoremap <leader>b <cmd>Buffers<cr>
@@ -42,12 +46,14 @@ set cursorline          " highlight current line
 set scrolloff=3         " number of screen lines to show around the cursor
 set sidescrolloff=2     " min # of columns to keep left/right of cursor
 set cmdheight=2         " cmdheight=2 helps avoid 'Press ENTER...' prompts
+set nowrap              " don't wrap lines
+set diffopt=filler,vertical  " options for diff mode
 set lazyredraw          " Makes applying macros faster
 set ignorecase
 set smartcase           " ignore case when pattern is lowercase only
 set expandtab           " replace tabs with spaces
 set textwidth=100
-"set list listchars=tab:>-,trail:.
+set list listchars=tab:>-,trail:.
 
 " treesitter (recomended ':TSInstall python', ':TSInstall cpp')
 lua <<END
@@ -61,16 +67,15 @@ END
 lua <<END
 local lsp = require('lspconfig')
 -- This is coupled with config files:
---   ~/.config/pycodestyle  ->  script-repo/emacs/python_checks_wrapper/pycodestyle.conf
---   ~/.config/pylintrc     ->
+--   ~/.config/pycodestyle
+--   ~/.config/pylintrc
 lsp.pylsp.setup { settings = { pylsp = { plugins = { pylint = { enabled = true }}}}}
 lsp.clangd.setup { cmd = {"clangd", "--clang-tidy", "--background-index", "--cross-file-rename"}}
 END
 
-nnoremap <silent> <leader>R <cmd>lua vim.lsp.buf.references()<cr>
-nnoremap <silent> <leader>r <cmd>lua vim.lsp.buf.rename()<cr>
+nnoremap <silent> <leader>r <cmd>lua vim.lsp.buf.references()<cr>
+nnoremap <silent> <leader>R <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <silent> <leader>d <cmd>lua vim.lsp.buf.definition()<cr>
-nnoremap <silent> <leader>A <cmd>lua vim.lsp.buf.code_action()<cr>
-xnoremap <silent> <leader>A <cmd>lua vim.lsp.buf.range_code_action()<cr>
+nnoremap <silent> <leader>a <cmd>lua vim.lsp.buf.code_action()<cr>
 nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <silent> <leader>t <cmd>lua vim.lsp.buf.type_definition()<cr>
