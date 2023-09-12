@@ -172,13 +172,13 @@ set scrolloff=3         " number of screen lines to show around the cursor
 set sidescrolloff=2     " min # of columns to keep left/right of cursor
 set cmdheight=2         " cmdheight=2 helps avoid 'Press ENTER...' prompts
 set nowrap              " don't wrap lines
-set diffopt=filler,vertical  " options for diff mode
 set lazyredraw          " Makes applying macros faster
 set ignorecase
 set smartcase           " ignore case when pattern is lowercase only
 set expandtab           " replace tabs with spaces
 set textwidth=100
-set list listchars=tab:>-,trail:.
+set diffopt+=vertical   " options for diff mode
+set list listchars=tab:>-,trail:.     " show tabs and trailing whitespace
 
 set gdefault            " for :substitute, use the /g flag by default
 set mouse=

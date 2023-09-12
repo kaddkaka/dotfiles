@@ -33,13 +33,13 @@ let g:fzf_preview_window = ['hidden', 'ctrl-o']
 
 augroup init_group
   autocmd!
+  " give feedback on yanked text
   autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
-
+  " set some filetype specific options
   autocmd FileType xml,cpp,vim,lua setlocal shiftwidth=2
   autocmd FileType systemverilog setlocal shiftwidth=3
-
   autocmd FileType groovy,rst syntax sync fromstart
-  autocmd FileType rst,markdown setlocal textwidth=80
+  autocmd FileType rst,markdown setlocal textwidth=80  " narrower for prose
 augroup END
 
 set cursorline          " highlight current line
@@ -47,15 +47,15 @@ set scrolloff=3         " number of screen lines to show around the cursor
 set sidescrolloff=2     " min # of columns to keep left/right of cursor
 set cmdheight=2         " cmdheight=2 helps avoid 'Press ENTER...' prompts
 set nowrap              " don't wrap lines
-set diffopt=filler,vertical  " options for diff mode
 set lazyredraw          " Makes applying macros faster
 set ignorecase
 set smartcase           " ignore case when pattern is lowercase only
 set expandtab           " replace tabs with spaces
 set textwidth=100
-set list listchars=tab:>-,trail:.
+set diffopt+=vertical   " options for diff mode
+set list listchars=tab:>-,trail:.     " show tabs and trailing whitespace
 
-" treesitter (recomended ':TSInstall python', ':TSInstall cpp')
+" treesitter (recommended ':TSInstall vim lua python cpp')
 lua <<END
 require('nvim-treesitter.configs').setup {
   highlight = {enable=true, disable={"verilog"}},
