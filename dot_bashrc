@@ -113,4 +113,4 @@ source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 source "$XDG_CONFIG_HOME/fzf/key-bindings.bash"
 #export FZF_DEFAULT_OPTS="--no-mouse $FZF_DEFAULT_OPTS"
 
-[ -e "$HOME/mediatek.bash" ] && source "$HOME/mediatek.bash"
+[ -e "$HOME/mediatek.bash" ] && source "$HOME/mediatek.bash" || true
