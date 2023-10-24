@@ -97,6 +97,7 @@ lua require("pretty-fold").setup()
 map <leader>b <cmd>Buffers<cr>
 map <leader>f <cmd>GFiles<cr>
 map <leader>F <cmd>Files<cr>
+map <leader>h <cmd>call fzf#run({'source': 'fd . -H', 'sink': 'e'})<cr>
 map <leader>l <cmd>Files %:h<cr>
 map <leader>L <cmd>Lines<cr>
 map <leader>t <cmd>BTags<cr>
