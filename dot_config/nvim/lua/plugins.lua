@@ -36,20 +36,14 @@ require('nvim-treesitter.configs').setup {
   playground = {enable=true},
 }
 
---require'treesitter-context'.setup {
---  max_lines = 4,
---  patterns = {
---    default = {
---      'class',
---      'function',
---    },
---    cpp = {
---      'class_specifier',
---      'struct_specifier',
---    },
---    verilog = { 'function_declaration' },
---  },
---}
+require'treesitter-context'.setup {
+  max_lines = 4,
+  patterns = {
+    default = { 'class', 'function', },
+    cpp = { 'class_specifier', 'struct_specifier', },
+    verilog = { 'function_declaration' },
+  },
+}
 
 require("trouble").setup { position = "right" }
 
