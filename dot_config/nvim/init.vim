@@ -77,6 +77,8 @@ Plug 'habamax/vim-rst'
 Plug 'jpalardy/vim-slime'
 Plug 'anuvyklack/pretty-fold.nvim'
 Plug 'https://github.com/p00f/godbolt.nvim'
+Plug 'https://github.com/dccsillag/magma-nvim'
+Plug 'https://github.com/mfussenegger/nvim-dap'
 call plug#end()
 
 colorscheme kanagawa
