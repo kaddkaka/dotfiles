@@ -1,7 +1,7 @@
-bind main R !git rebase -i %(commit)~ --keep-empty
-bind diff R !git rebase -i %(commit)~ --keep-empty
-bind main S !git rebase -i %(commit)~ --autosquash
-bind diff S !git rebase -i %(commit)~ --autosquash
+bind main R !git rebase -i %(commit)^ --keep-empty --rebase-merges
+bind diff R !git rebase -i %(commit)^ --keep-empty --rebase-merges
+bind main S !git rebase -i %(commit)^ --autosquash --rebase-merges
+bind diff S !git rebase -i %(commit)^ --autosquash --rebase-merges
 
 bind main C !clang_format_branch.py %(commit)
 
