@@ -6,6 +6,8 @@ map <leader>e <cmd>Files $CHEZMOI_HOME<cr>
 
 " Convenient way to exit insert mode
 inoremap kj <esc>
+" Swap to previous ("alternate") buffer
+noremap <leader><leader> <C-^>
 
 " Navigate quickfix list
 nnoremap <a-j> <cmd>cnext<cr>
