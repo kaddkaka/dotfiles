@@ -46,7 +46,7 @@ require'treesitter-context'.setup {
   },
 }
 
-require("trouble").setup { position = "right" }
+require("trouble").setup{}  -- { position = "right" }
 
 require("godbolt").setup({
     languages = {
