@@ -131,6 +131,7 @@ set list listchars=tab:>-,trail:.     " show tabs and trailing whitespace
 set gdefault            " for :substitute, use the /g flag by default
 set mouse=
 set formatoptions-=t    " Don't automatically format code on insert
+let g:markdown_folding=1
 
 lua require("twilight").setup()
 lua require("pretty-fold").setup()
