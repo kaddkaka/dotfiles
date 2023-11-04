@@ -1,11 +1,11 @@
 -- Setup for plugins
 
-local ts = require('telescope')
-ts.setup { extensions = { fzf = {
-  override_generic_sorter = true,
-  override_file_sorter = true,
-}}}
-ts.load_extension('fzf')
+--local ts = require('telescope')
+--ts.setup { extensions = { fzf = {
+--  override_generic_sorter = true,
+--  override_file_sorter = true,
+--}}}
+--ts.load_extension('fzf')
 
 local lsp = require('lspconfig')
 -- This is coupled with config files:
