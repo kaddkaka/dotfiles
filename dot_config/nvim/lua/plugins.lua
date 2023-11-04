@@ -8,6 +8,8 @@
 --ts.load_extension('fzf')
 
 local lsp = require('lspconfig')
+lsp.util.default_config = vim.tbl_extend( "force", lsp.util.default_config,
+  { on_attach = function(client) client.server_capabilities.semanticTokensProvider = nil end })
 -- This is coupled with config files:
 --   ~/.config/pycodestyle
 --   ~/.config/pylintrc
