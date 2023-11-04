@@ -105,8 +105,9 @@ augroup init_group
   " support <leader>l binding in :Explore
   autocmd FileType netrw nmap <buffer> <leader>l <cmd>execute("Files " .. b:netrw_curdir)<cr>
   " set some filetype specific options
+  autocmd BufNewFile,BufRead *.vh set filetype=verilog
   autocmd FileType xml,cpp,vim,lua setlocal shiftwidth=2
-  autocmd FileType systemverilog setlocal shiftwidth=3
+  autocmd FileType verilog,systemverilog setlocal shiftwidth=3
   autocmd FileType groovy,rst syntax sync fromstart
   autocmd FileType rst,markdown setlocal textwidth=80  " narrower for prose
 augroup END
