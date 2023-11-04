@@ -45,6 +45,7 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " Good plugins
 Plug 'mfussenegger/nvim-lint'
+Plug 'dhruvasagar/vim-table-mode'
 
 " Useful plugins/Plugins in evaluation
 "Plug 'michaeljsmith/vim-indent-object'  " indent textobject
