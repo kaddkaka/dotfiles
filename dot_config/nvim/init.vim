@@ -84,10 +84,6 @@ nnoremap <leader>l <cmd>Files %:h<cr>
 nnoremap <leader>h <cmd>call fzf#run({'source': 'fd . -H', 'sink': 'e'})<cr>
 "let g:fzf_action = {'ctrl-q': 'fill_quickfix'}
 let g:fzf_preview_window = ['hidden', 'ctrl-o']
-augroup netrw
-  autocmd!
-  autocmd FileType netrw nmap <buffer> <leader>l <cmd>execute("Files " .. g:netrw_dirhist_0)<cr>
-augroup END
 
 "vim-easy-align, see :h EasyAlign
 xmap ga <Plug>(EasyAlign)
@@ -97,10 +93,14 @@ augroup init_group
   autocmd!
   " Automatically apply update to config files with chezmoi
   autocmd BufWritePost ~/.local/share/chezmoi/[^.]* ! chezmoi apply --source-path <afile>
+  " Trim trailing whitespace on save (circumvent w :noautocmd w)
+  autocmd BufWritePre * let pos = getpos(".") | %s/\s\+$//e | call setpos(".", pos)
   " give feedback on yanked text
   autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
   " 'mfussenegger/nvim-lint' linters
   autocmd BufWritePost,BufNewFile,BufRead *.yaml lua require('lint').try_lint()
+  " support <leader>l binding in :Explore
+  autocmd FileType netrw nmap <buffer> <leader>l <cmd>execute("Files " .. b:netrw_curdir)<cr>
   " set some filetype specific options
   autocmd FileType xml,cpp,vim,lua setlocal shiftwidth=2
   autocmd FileType systemverilog setlocal shiftwidth=3
@@ -163,7 +163,7 @@ nnoremap <leader>tl <cmd>lua vim.lsp.diagnostic.set_loclist()<cr>
 " sort on length of line
 "   :%!awk '{print length(), $0 | "sort -n | cut -d\\  -f2-" }'
 
-"Creating some new text objects:
+" Creating some new text objects:
 onoremap <silent> iT :<C-U>normal! vit<space>kojV<CR>
 
 " makes * and # act on whole selection in visual mode ("very nomagic")
@@ -177,14 +177,3 @@ endfunction
 " warning: shadows builtins!
 xnoremap * :<c-u>call g:VSetSearch('/')<cr>/<c-r>=@/<cr><cr>
 xnoremap # :<c-u>call g:VSetSearch('?')<cr>?<c-r>=@/<cr><cr>
-
-augroup trim_whitespace
-  " Trim trailing Whitespaces on save
-  function! TrimWhitespace()
-      let l = line(".")
-      let c = col(".")
-      %s/\s\+$//e
-      call cursor(l, c)
-  endfunction
-  autocmd BufWritePre * :call TrimWhitespace()
-augroup END
