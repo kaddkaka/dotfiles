@@ -89,14 +89,6 @@ augroup netrw
   autocmd FileType netrw nmap <buffer> <leader>l <cmd>execute("Files " .. g:netrw_dirhist_0)<cr>
 augroup END
 
-lua require("Navigator").setup()
-nnoremap <a-h> <cmd>NavigatorLeft<cr>
-nnoremap <a-l> <cmd>NavigatorRight<cr>
-
-lua require("twilight").setup()
-lua require("pretty-fold").setup()
-let g:slime_target = "wezterm"
-
 "vim-easy-align, see :h EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -136,10 +128,18 @@ set gdefault            " for :substitute, use the /g flag by default
 set mouse=
 set formatoptions-=t    " Don't automatically format code on insert
 
+lua require("twilight").setup()
+lua require("pretty-fold").setup()
+
+lua require("Navigator").setup()
+nnoremap <a-h> <cmd>NavigatorLeft<cr>
+nnoremap <a-l> <cmd>NavigatorRight<cr>
 nnoremap <s-Up>    :resize +10<cr>
 nnoremap <s-Down>  :resize -10<cr>
 nnoremap <s-Left>  :vertical resize +20<cr>
 nnoremap <s-Right> :vertical resize -20<cr>
+
+let g:slime_target = "wezterm"
 
 lua require('plugins')
 runtime mediatek.vim
