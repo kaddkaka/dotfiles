@@ -17,14 +17,14 @@ lsp.pylsp.setup { settings = { pylsp = { plugins = { pylint = { enabled = true }
 lsp.clangd.setup { cmd = {"clangd", "--clang-tidy", "--background-index", "--cross-file-rename"}}
 lsp.nimls.setup{}
 require'lspconfig'.rust_analyzer.setup { settings = {
-        ["rust-analyzer"] = {
-            checkOnSave = {
-                command = "clippy",
-                extraArgs = {
-                    "--target-dir", "$HOME/.cache/rust_analyzer",
-                    "--",
-                    "-W", "clippy::pedantic",
-                }, }}}}
+  ["rust-analyzer"] = {
+    checkOnSave = {
+      command = "clippy",
+      extraArgs = {
+        "--target-dir", "$HOME/.cache/rust_analyzer",
+        "--",
+        "-W", "clippy::pedantic",
+      }, }}}}
 
 require('lint').linters_by_ft = {
   yaml = {'yamllint',}
@@ -49,15 +49,15 @@ require'treesitter-context'.setup {
 require("trouble").setup{}  -- { position = "right" }
 
 require("godbolt").setup({
-    languages = {
-        cpp = { compiler = "g122", options = {} },
-        c = { compiler = "cg122", options = {} },
-        rust = { compiler = "r1650", options = {} },
-        -- any_additional_filetype = { compiler = ..., options = ... },
-    },
-    quickfix = {
-        enable = true, -- whether to populate the quickfix list in case of errors
-        auto_open = false -- whether to open the quickfix list in case of errors
-    },
-    url = "https://godbolt.org" -- can be changed to a different godbolt instance
+  languages = {
+    cpp = { compiler = "g122", options = {} },
+    c = { compiler = "cg122", options = {} },
+    rust = { compiler = "r1650", options = {} },
+    -- any_additional_filetype = { compiler = ..., options = ... },
+  },
+  quickfix = {
+    enable = true, -- whether to populate the quickfix list in case of errors
+    auto_open = false -- whether to open the quickfix list in case of errors
+  },
+  url = "https://godbolt.org" -- can be changed to a different godbolt instance
 })
