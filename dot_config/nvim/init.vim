@@ -167,7 +167,7 @@ nnoremap <silent> <leader>t <cmd>lua vim.lsp.buf.type_definition()<cr>
 
 " Treesitter: Toggle playground/InstepctTree, populate loclist
 nnoremap <leader>tp <cmd>InspectTree<cr>
-nnoremap <leader>tl <cmd>lua vim.lsp.diagnostic.set_loclist()<cr>
+nnoremap <leader>tl <cmd>lua vim.diagnostic.setqflist()<cr>
 
 " Sorting examples:
 " stable sort on column 3
