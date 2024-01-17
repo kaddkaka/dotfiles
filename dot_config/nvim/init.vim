@@ -51,8 +51,8 @@ Plug 'dhruvasagar/vim-table-mode'
 " Useful plugins/Plugins in evaluation
 Plug 'tpope/vim-abolish'  " smartcase replace
 Plug 'tpope/vim-repeat'   " repeat complex commands
-"Plug 'michaeljsmith/vim-indent-object'  " indent textobject
-Plug 'echasnovski/mini.indentscope'     " indent textobject
+Plug 'michaeljsmith/vim-indent-object'  " indent textobject
+"Plug 'echasnovski/mini.indentscope'     " indent textobject
 Plug 'kyazdani42/nvim-web-devicons' " icons (needed?)
 Plug 'folke/trouble.nvim'           " collect diagnostics and report source
 Plug 'folke/twilight.nvim'          " limielight, focused highlighting
