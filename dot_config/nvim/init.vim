@@ -24,8 +24,9 @@ xnoremap , @:
 " Repeat last change in all of file ("global repeat", similar to g&)
 nnoremap g. :%s//./&<esc>
 
-" dim search highlight
+" dim search highlight, count matches
 nnoremap <leader>/ <cmd>nohlsearch<cr>
+nnoremap <leader>n <cmd>%s///n<cr>
 
 " select last changed text (similar to gv)
 nnoremap gV `[v`]
