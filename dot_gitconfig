@@ -20,7 +20,7 @@
 
      bp      = merge-base HEAD origin/master
      mb      = merge-base HEAD origin/master
-     sb      = git rebase -i $(merge-base HEAD origin/master)
+     sb      = !git rebase -i $(git merge-base HEAD origin/master)
 
      ref     = reflog --date=iso
      bsearch = !git branch -a | fzf
