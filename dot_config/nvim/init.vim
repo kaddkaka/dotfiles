@@ -94,6 +94,7 @@ nnoremap <leader>l <cmd>Files %:h<cr>
 nnoremap <leader>h <cmd>call fzf#run({'source': 'fd . -H', 'sink': 'e'})<cr>
 "let g:fzf_action = {'ctrl-q': 'fill_quickfix'}
 let g:fzf_preview_window = ['hidden', 'ctrl-o']
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 "vim-easy-align, see :h EasyAlign
 xmap ga <Plug>(EasyAlign)
