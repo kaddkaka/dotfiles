@@ -114,6 +114,7 @@ augroup init_group
   autocmd FileType netrw nmap <buffer> <leader>l <cmd>execute("Files " .. b:netrw_curdir)<cr>
   " set some filetype specific options
   autocmd BufNewFile,BufRead *.vh set filetype=verilog
+  autocmd BufNewFile,BufRead *.module set filetype=tcl
   autocmd FileType xml,cpp,vim,lua setlocal shiftwidth=2
   autocmd FileType verilog,systemverilog setlocal shiftwidth=3
   autocmd FileType groovy,rst syntax sync fromstart
