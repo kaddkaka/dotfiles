@@ -3,6 +3,7 @@ let mapleader = " "
 " Quick way to edit config file(s)
 map <leader>e <cmd>Files $CHEZMOI_HOME<cr>
 "map <leader>e <cmd>e $MYVIMRC<cr>
+map <leader>w <cmd>w<cr>
 
 " Convenient way to exit insert mode
 inoremap kj <esc>
@@ -22,7 +23,7 @@ nnoremap , @:
 xnoremap , @:
 
 " Repeat last change in all of file ("global repeat", similar to g&)
-nnoremap g. :%s//./&<esc>
+nnoremap g. :set nogdefault<cr> <bar> :%s//./g<cr> <bar> :set gdefault<cr>
 
 " dim search highlight, count matches
 nnoremap <leader>/ <cmd>nohlsearch<cr>
