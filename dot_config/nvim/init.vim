@@ -67,6 +67,7 @@ Plug 'p00f/godbolt.nvim'            " compiler explorer
 Plug 'dccsillag/magma-nvim'         " jupyter related
 Plug 'mfussenegger/nvim-dap'        " debug adapter protocol
 Plug 'protesilaos/tempus-themes'    " colorscheme
+Plug 'stevearc/oil.nvim'
 "Plug 'nvim-lua/plenary.nvim'
 "Plug 'nvim-telescope/telescope.nvim'
 "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -136,8 +137,7 @@ set smartcase           " ignore case when pattern is lowercase only
 set expandtab           " replace tabs with spaces
 set textwidth=100
 set diffopt+=vertical   " options for diff mode
-set list listchars=tab:>-,trail:.     " show tabs and trailing whitespace
-
+set list listchars=tab:\|\ ,trail:. " show tabs and trailing whitespace
 set gdefault            " for :substitute, use the /g flag by default
 set mouse=
 set formatoptions-=t    " Don't automatically format code on insert
