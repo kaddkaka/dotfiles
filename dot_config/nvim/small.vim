@@ -11,16 +11,9 @@ inoremap kj <esc>
 nnoremap <a-j> <cmd>cnext<cr>
 nnoremap <a-k> <cmd>cprev<cr>
 
-" Stamping and substitute inside selection
-nnoremap S "_ciw<c-r>"<esc>
-xnoremap s :s/\%V
-
 " Repeat the last : command (warning: shadows builtin!)
 nnoremap , @:
 xnoremap , @:
-
-" Repeat last change in all of file ("global repeat", similar to g&)
-nnoremap g. :%s//./&<esc>
 
 " dim search highlight
 nnoremap <leader>/ <cmd>nohlsearch<cr>
@@ -38,7 +31,6 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'junegunn/vim-easy-align'  " EasyAlign
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'mfussenegger/nvim-lint'
-Plug 'dhruvasagar/vim-table-mode'
 Plug 'echasnovski/mini.indentscope'  " indent textobject
 call plug#end()
 
@@ -72,16 +64,12 @@ nmap ga <Plug>(EasyAlign)
 
 augroup init_group
   autocmd!
-  " Automatically apply update to config files with chezmoi
-  autocmd BufWritePost ~/.local/share/chezmoi/[^.]* ! chezmoi apply --source-path <afile>
   " Trim trailing whitespace on save (circumvent w :noautocmd w)
   autocmd BufWritePre * let pos = getpos(".") | %s/\s\+$//e | call setpos(".", pos)
   " give feedback on yanked text
   autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
   " 'mfussenegger/nvim-lint' linters
   autocmd BufWritePost,BufNewFile,BufRead *.yaml lua require('lint').try_lint()
-  " support <leader>l binding in :Explore
-  autocmd FileType netrw nmap <buffer> <leader>l <cmd>execute("Files " .. b:netrw_curdir)<cr>
   " set some filetype specific options
   autocmd BufNewFile,BufRead *.vh set filetype=verilog
   autocmd FileType xml,cpp,vim,lua setlocal shiftwidth=2
@@ -89,9 +77,6 @@ augroup init_group
   autocmd FileType groovy,rst syntax sync fromstart
   autocmd FileType rst,markdown setlocal textwidth=80  " narrower for prose
 augroup END
-
-" Command to refresh quickfix list:
-"call setqflist(map(getqflist(), 'extend(v:val, {"text":get(getbufline(v:val.bufnr, v:val.lnum),0)})'))
 
 set cursorline          " highlight current line
 set scrolloff=3         " number of screen lines to show around the cursor
@@ -107,9 +92,8 @@ set diffopt+=vertical   " options for diff mode
 set list listchars=tab:>-,trail:.     " show tabs and trailing whitespace
 
 set gdefault            " for :substitute, use the /g flag by default
-set mouse=
+set mouse=a
 set formatoptions-=t    " Don't automatically format code on insert
-let g:markdown_folding=1
 
 nnoremap <s-Up>    <cmd>resize +10<cr>
 nnoremap <s-Down>  <cmd>resize -10<cr>
