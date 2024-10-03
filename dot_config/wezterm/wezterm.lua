@@ -38,7 +38,6 @@ return {
   window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
   adjust_window_size_when_changing_font_size = false,
   inactive_pane_hsb = { saturation = 1, brightness = 1 },  -- s0.9, b0.8
-  use_fancy_tab_bar = false,
 
   color_scheme = 'nord',
   force_reverse_video_cursor = true,
