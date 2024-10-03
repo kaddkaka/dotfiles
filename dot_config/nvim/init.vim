@@ -13,6 +13,8 @@ noremap <leader><leader> <C-^>
 " Navigate quickfix list
 nnoremap <a-j> <cmd>cnext<cr>
 nnoremap <a-k> <cmd>cprev<cr>
+nnoremap <a-J> <cmd>cnfile<cr>
+nnoremap <a-K> <cmd>cNfile<cr>
 
 " Stamping and substitute inside selection
 nnoremap S "_ciw<c-r>"<esc>
