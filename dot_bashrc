@@ -113,6 +113,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 source "$XDG_CONFIG_HOME/wezterm/shell-integration.sh"  # This makes my prompt very slow
 source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 source "$XDG_CONFIG_HOME/fzf/key-bindings.bash"
+source "$XDG_CONFIG_HOME/bash/fzf-bash-completion.sh"
+bind -x '"\t": fzf_bash_completion'
 #export FZF_DEFAULT_OPTS="--no-mouse $FZF_DEFAULT_OPTS"
 
 [ -e "$HOME/mediatek.bash" ] && source "$HOME/mediatek.bash" || true
