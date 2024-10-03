@@ -26,6 +26,9 @@ alias gs='git status'
 alias gd='git diff'
 alias ga='git add -u'
 
+alias woman='MANPAGER="nvim +Man!" man'
+alias astronvim='NVIM_APPNAME=astronvim nvim'
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
