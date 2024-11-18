@@ -42,6 +42,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neovim/nvim-lspconfig'
 
+" Restore regressions from treesitter
+Plug 'https://github.com/andymass/vim-matchup'
+let g:matchup_matchparen_offscreen = {}
+
 " Great plugins
 Plug 'rebelot/kanagawa.nvim'
 Plug 'junegunn/vim-easy-align'  " EasyAlign
