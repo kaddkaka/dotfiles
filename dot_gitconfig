@@ -37,6 +37,9 @@
      histrem = !git fetch --all && git for-each-ref refs/remotes --color=always --sort=committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(color:cyan)%(authorname)%(color:reset) - %(contents:subject) - (%(color:green)%(committerdate:relative)%(color:reset))' | grep -v JENKINS
      aliases = config --get-regexp '^alias\\.'
      sed = ! git grep -z --full-name -l '.' | xargs -0 sed -i -e
+
+     # show the total diff of a branch compared to when branch was branched from master
+     inspect = !echo "!git diff $(git merge-base origin/master $1)..$1"
 [color]
      ui = auto
 [push]
