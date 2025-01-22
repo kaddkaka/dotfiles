@@ -30,10 +30,13 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+# prompt stuff
+if [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
+	. /usr/lib/git-core/git-sh-prompt
+fi
+
 # pyenv stuff
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# prompt stuff
-. ~/bin/git-prompt.sh
