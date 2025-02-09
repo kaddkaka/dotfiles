@@ -204,3 +204,28 @@ nnoremap <leader>tl <cmd>lua vim.diagnostic.setqflist()<cr>
 
 " Creating some new text objects:
 onoremap <silent> iT :<C-U>normal! vit<space>kojV<CR>
+
+function! s:CleverTab()
+  " Use tab for going forward in the pop up menu (pum).
+  if pumvisible()
+    return "\<C-n>"
+  " Check if the cursor is at the beginning of line or after whitespace
+  elseif col('.') == 1 || strpart( getline('.'), 0, col('.')-1 ) =~ '\s$'
+    return "\<Tab>"
+  else
+    " If the previous text looks like a path, use filename completion.
+    if strpart( getline('.'), 0, col('.')-1 ) =~ '/$'
+      return "\<C-x>\<C-f>"
+    " Use omnifunc if available
+    elseif &omnifunc != ''
+      return "\<C-X>\<C-O>"
+    " Otherwise use the dictionary completion
+    elseif &dictionary != ''
+      return "\<C-K>"
+    else
+      return "\<C-P>"
+    endif
+  endif
+endfunction
+inoremap <silent> <Tab> <C-R>=<SID>CleverTab()<CR>
+inoremap <silent> <S-Tab> <C-p>
