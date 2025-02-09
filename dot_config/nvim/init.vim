@@ -85,6 +85,7 @@ Plug 'stevearc/oil.nvim'
 "Plug 'MunifTanjim/nui.nvim'
 "Plug 'rcarriga/nvim-notify'
 "Plug 'folke/noice.nvim'
+Plug 'https://github.com/folke/snacks.nvim'
 call plug#end()
 
 colorscheme kanagawa
@@ -98,15 +99,22 @@ nnoremap <leader>g :Ggrep -q <c-r><c-w>
 nnoremap <leader>G :Ggrep -q <c-r><c-w> -- <c-r>%
 nnoremap gb <cmd>Git blame<cr>
 
-" fzf settings (see also :Lines :Tags :Btags) l=directory local files
-nnoremap <leader>b <cmd>Buffers<cr>
-nnoremap <leader>f <cmd>GFiles<cr>
-nnoremap <leader>F <cmd>Files<cr>
-nnoremap <leader>l <cmd>Files %:h<cr>
-nnoremap <leader>h <cmd>call fzf#run({'source': 'fd . -H', 'sink': 'e'})<cr>
-"let g:fzf_action = {'ctrl-q': 'fill_quickfix'}
-let g:fzf_preview_window = ['hidden', 'ctrl-o']
-let g:fzf_history_dir = '~/.local/share/fzf-history'
+"" fzf settings (see also :Lines :Tags :Btags) l=directory local files
+"nnoremap <leader>b <cmd>Buffers<cr>
+"nnoremap <leader>f <cmd>GFiles<cr>
+"nnoremap <leader>F <cmd>Files<cr>
+"nnoremap <leader>l <cmd>Files %:h<cr>
+"nnoremap <leader>h <cmd>call fzf#run({'source': 'fd . -H', 'sink': 'e'})<cr>
+""let g:fzf_action = {'ctrl-q': 'fill_quickfix'}
+"let g:fzf_preview_window = ['hidden', 'ctrl-o']
+"let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+nnoremap <leader>b <cmd>lua Snacks.picker.buffers()<cr>
+nnoremap <leader>o <cmd>lua Snacks.picker.lsp_symbols({layout = {preset="vscode", preview="main"}})<cr>
+nnoremap <leader>s <cmd>lua Snacks.picker.smart()<cr>
+nnoremap <leader>f <cmd>lua Snacks.picker.git_files()<cr>
+nnoremap <leader>F <cmd>lua Snacks.picker.files()<cr>
+nnoremap <leader>l <cmd>lua Snacks.picker.files({ cwd = vim.fn.expand("%:h") })<cr>
 
 "vim-easy-align, see :h EasyAlign
 xmap ga <Plug>(EasyAlign)
