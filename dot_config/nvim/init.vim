@@ -204,15 +204,3 @@ nnoremap <leader>tl <cmd>lua vim.diagnostic.setqflist()<cr>
 
 " Creating some new text objects:
 onoremap <silent> iT :<C-U>normal! vit<space>kojV<CR>
-
-" makes * and # act on whole selection in visual mode ("very nomagic")
-" allows to easily find weird strings like /*foo*/
-function! g:VSetSearch(cmdtype)
-  let temp = @s
-  norm! gv"sy
-  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-  let @s = temp
-endfunction
-" warning: shadows builtins!
-xnoremap * :<c-u>call g:VSetSearch('/')<cr>/<c-r>=@/<cr><cr>
-xnoremap # :<c-u>call g:VSetSearch('?')<cr>?<c-r>=@/<cr><cr>
