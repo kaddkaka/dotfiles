@@ -55,6 +55,9 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'mfussenegger/nvim-lint'
 Plug 'dhruvasagar/vim-table-mode'
 
+" Trial mode
+Plug 'https://github.com/jmbuhr/otter.nvim'
+
 " Useful plugins/Plugins in evaluation
 Plug 'tpope/vim-abolish'  " smartcase replace
 Plug 'tpope/vim-repeat'   " repeat complex commands
@@ -155,6 +158,7 @@ set mouse=
 set formatoptions-=t    " Don't automatically format code on insert
 let g:markdown_folding=1
 
+"lua require("otter").setup()
 lua require("twilight").setup()
 lua require("pretty-fold").setup()
 
