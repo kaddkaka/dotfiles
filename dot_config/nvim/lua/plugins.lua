@@ -16,6 +16,7 @@ lsp.util.default_config = vim.tbl_extend( "force", lsp.util.default_config,
 lsp.pylsp.setup { settings = { pylsp = { plugins = { pylint = { enabled = true }}}}}
 lsp.clangd.setup { cmd = {"clangd", "--clang-tidy", "--background-index", "--cross-file-rename"}}
 lsp.nimls.setup{}
+lsp.zls.setup{}
 require'lspconfig'.rust_analyzer.setup { settings = {
   ["rust-analyzer"] = {
     checkOnSave = {
