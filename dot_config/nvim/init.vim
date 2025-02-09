@@ -68,7 +68,7 @@ Plug 'kyazdani42/nvim-web-devicons' " icons (needed?)
 Plug 'folke/trouble.nvim'           " collect diagnostics and report source
 Plug 'folke/twilight.nvim'          " limielight, focused highlighting
 Plug 'jbyuki/venn.nvim'             " draw ascii diagrams
-Plug 'powerman/vim-plugin-AnsiEsc'  " Adds annoying bindings (starting w. <leader>)
+"Plug 'powerman/vim-plugin-AnsiEsc'  " Adds annoying bindings (starting w. <leader>)
 Plug 'numToStr/Navigator.nvim'      " pane/windows navigation
 Plug 'habamax/vim-rst'              " restructured text
 Plug 'jpalardy/vim-slime'           " interact with split terminal?
