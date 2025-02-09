@@ -60,6 +60,7 @@ Plug 'tpope/vim-abolish'  " smartcase replace
 Plug 'tpope/vim-repeat'   " repeat complex commands
 Plug 'michaeljsmith/vim-indent-object'  " indent textobject
 "Plug 'echasnovski/mini.indentscope'     " indent textobject
+Plug 'https://github.com/ColinKennedy/cursor-text-objects.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " icons (needed?)
 Plug 'folke/trouble.nvim'           " collect diagnostics and report source
 Plug 'folke/twilight.nvim'          " limielight, focused highlighting
@@ -107,6 +108,11 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 "vim-easy-align, see :h EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+onoremap [ <Plug>(cursor-text-objects-up)
+onoremap ] <Plug>(cursor-text-objects-down)
+xnoremap [ <Plug>(cursor-text-objects-up)
+xnoremap ] <Plug>(cursor-text-objects-down)
 
 augroup init_group
   autocmd!
