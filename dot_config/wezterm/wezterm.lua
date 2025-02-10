@@ -32,6 +32,7 @@ end
 
 return {
   harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
+  font_size = 10,
   window_decorations = "NONE",
   front_end = "OpenGL",
   use_fancy_tab_bar = false,
