@@ -72,7 +72,7 @@ Plug 'jbyuki/venn.nvim'             " draw ascii diagrams
 Plug 'numToStr/Navigator.nvim'      " pane/windows navigation
 Plug 'habamax/vim-rst'              " restructured text
 Plug 'jpalardy/vim-slime'           " interact with split terminal?
-Plug 'anuvyklack/pretty-fold.nvim'  " fold and only keep 1 line
+"Plug 'anuvyklack/pretty-fold.nvim'  " fold and only keep 1 line
 Plug 'p00f/godbolt.nvim'            " compiler explorer
 Plug 'dccsillag/magma-nvim'         " jupyter related
 Plug 'mfussenegger/nvim-dap'        " debug adapter protocol
@@ -168,7 +168,7 @@ let g:markdown_folding=1
 
 "lua require("otter").setup()
 lua require("twilight").setup()
-lua require("pretty-fold").setup()
+"lua require("pretty-fold").setup()
 
 lua require("Navigator").setup()
 nnoremap <a-h> <cmd>NavigatorLeft<cr>
