@@ -11,6 +11,8 @@
 export EDITOR=nvim
 
 # Bind ctrl-a to do the opposite of ctrl-z
+# This is not recommended way to do this in bash, bindings are not intended to be used this way and
+# it can lead to strange behavior and broken tty settings (resetted by `stty sane`)
 bind -x '"\C-a":"fg"'
 
 HISTCONTROL=ignoreboth:erasedups
@@ -95,20 +97,27 @@ export CCACHE_DIR=/local/ccache
 export DISTCC_DIR=/local/distcc
 export USE_DISTCC=1
 
+# completion for git-jump from git contrib folder
 _git_jump() { __gitcomp "diff merge grep ws" "" "$cur"; }
 
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
 
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
 export CHEZMOI_HOME="$XDG_DATA_HOME/chezmoi"
 
-export XDG_CONFIG_HOME="$HOME/.config"
-source "$XDG_CONFIG_HOME/wezterm/shell-integration.sh"  # This makes my prompt very slow
-source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
-source "$XDG_CONFIG_HOME/fzf/key-bindings.bash"
-source "$XDG_CONFIG_HOME/bash/fzf-bash-completion.sh"
+# fzf
+eval "$(fzf --bash)"
 bind -x '"\t": fzf_bash_completion'
 #export FZF_DEFAULT_OPTS="--no-mouse $FZF_DEFAULT_OPTS"
+
+# broot (interactive tree explorer)
+source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
+
+# changes PS1 to add OSC codes for semantic zones
+if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
+  source "$XDG_CONFIG_HOME/wezterm/shell-integration.sh"  # This makes my prompt very slow
+fi
 
 [ -e "$HOME/mediatek.bash" ] && source "$HOME/mediatek.bash" || true
