@@ -146,6 +146,7 @@ augroup init_group
   autocmd FileType verilog,systemverilog setlocal shiftwidth=3
   autocmd FileType groovy,rst syntax sync fromstart
   autocmd FileType rst,markdown setlocal textwidth=80  " narrower for prose
+  autocmd FileType bash make %
 augroup END
 
 " Command to refresh quickfix list:
