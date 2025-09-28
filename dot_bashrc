@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # vi: ft=bash
 
 # Add bin to path always so that ssh command can exec these directly
@@ -54,11 +55,15 @@ else
 fi
 unset color_prompt
 PS1="$PS1_chroot$PS1_dir"'$(__git_ps1 " (%s)")\$ '
-GIT_PS1_SHOWUPSTREAM=verbose
+export GIT_PS1_SHOWUPSTREAM=verbose
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if [ -r ~/.dircolors ]; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
     alias ls='ls --color=auto'
 
     alias grep='grep --color=auto'
@@ -85,7 +90,7 @@ twogrep() {
 }
 
 ggblame() {
-  git grep -n "$@" | while IFS=: read i j k; do git blame -L $j,$j $i; done
+  git grep -n "$@" | while IFS=: read -r i j _k; do git blame -L "$j,$j" "$i"; done
 }
 
 # Use clang as default c/c++ compiler
@@ -109,6 +114,7 @@ export CHEZMOI_HOME="$XDG_DATA_HOME/chezmoi"
 
 # fzf
 eval "$(fzf --bash)"
+source "$XDG_CONFIG_HOME/bash/fzf-bash-completion.sh"
 bind -x '"\t": fzf_bash_completion'
 #export FZF_DEFAULT_OPTS="--no-mouse $FZF_DEFAULT_OPTS"
 
@@ -116,8 +122,9 @@ bind -x '"\t": fzf_bash_completion'
 source "$XDG_CONFIG_HOME/broot/launcher/bash/br"
 
 # changes PS1 to add OSC codes for semantic zones
-if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
-  source "$XDG_CONFIG_HOME/wezterm/shell-integration.sh"  # This makes my prompt very slow
-fi
+#if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
+#  source "$XDG_CONFIG_HOME/wezterm/shell-integration.sh"  # This makes my prompt very slow
+#fi
 
-[ -e "$HOME/mediatek.bash" ] && source "$HOME/mediatek.bash" || true
+[ -e "$HOME/mediatek.bash" ] && source "$HOME/mediatek.bash"
+
