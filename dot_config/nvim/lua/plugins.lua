@@ -7,17 +7,20 @@
 --}}}
 --ts.load_extension('fzf')
 
-local lsp = require('lspconfig')
-lsp.util.default_config = vim.tbl_extend( "force", lsp.util.default_config,
+vim.lsp.config('*',
   { on_attach = function(client) client.server_capabilities.semanticTokensProvider = nil end })
 -- This is coupled with config files:
 --   ~/.config/pycodestyle
 --   ~/.config/pylintrc
-lsp.pylsp.setup { settings = { pylsp = { plugins = { pylint = { enabled = true }}}}}
-lsp.clangd.setup { cmd = {"clangd", "--clang-tidy", "--background-index", "--cross-file-rename"}}
-lsp.nimls.setup{}
-lsp.zls.setup{}
-require'lspconfig'.rust_analyzer.setup { settings = {
+vim.lsp.config('pylsp', { settings = { pylsp = { plugins = { pylint = { enabled = true }}}}})
+vim.lsp.config('clangd', { cmd = {"clangd", "--clang-tidy", "--background-index", "--cross-file-rename"}})
+
+--vim.lsp.enable('nimls')
+vim.lsp.enable('zls')
+vim.lsp.enable('pylsp')
+vim.lsp.enable('clangd')
+
+vim.lsp.config('rust_analyzer', { settings = {
   ["rust-analyzer"] = {
     checkOnSave = {
       command = "clippy",
@@ -25,7 +28,7 @@ require'lspconfig'.rust_analyzer.setup { settings = {
         "--target-dir", "$HOME/.cache/rust_analyzer",
         "--",
         "-W", "clippy::pedantic",
-      }, }}}}
+      }, }}}})
 
 require('lint').linters_by_ft = {
   yaml = {'yamllint',}
