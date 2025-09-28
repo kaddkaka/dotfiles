@@ -57,6 +57,7 @@ Plug 'dhruvasagar/vim-table-mode'
 
 " Trial mode
 Plug 'https://github.com/jmbuhr/otter.nvim'
+Plug 'https://github.com/lewis6991/gitsigns.nvim'
 
 " Useful plugins/Plugins in evaluation
 Plug 'tpope/vim-abolish'  " smartcase replace
@@ -170,6 +171,7 @@ let g:markdown_folding=1
 "lua require("otter").setup()
 lua require("twilight").setup()
 "lua require("pretty-fold").setup()
+lua require('gitsigns').setup()
 
 lua require("Navigator").setup()
 nnoremap <a-h> <cmd>NavigatorLeft<cr>
