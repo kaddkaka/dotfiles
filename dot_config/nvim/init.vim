@@ -90,9 +90,10 @@ call plug#end()
 
 colorscheme kanagawa
 
-lua vim.diagnostic.config({virtual_text={format=function(d) return "" end}, signs=false})
-nnoremap <c-j> <cmd>lua vim.diagnostic.goto_next({float={source=true}})<cr>
-nnoremap <c-k> <cmd>lua vim.diagnostic.goto_prev({float={source=true}})<cr>
+"lua vim.diagnostic.config({virtual_text={format=function(d) return "" end}, signs=false})
+"lua vim.diagnostic.config({virtual_lines={current_line=true, format=function(d) return string.format("%s: %s [%s]", d.code, d.message, d.source) end}})
+nnoremap <c-j> <cmd>lua vim.diagnostic.jump({count= vim.v.count1, float={source=true}})<cr>
+nnoremap <c-k> <cmd>lua vim.diagnostic.jump({count=-vim.v.count1, float={source=true}})<cr>
 
 " fugitive settings (see also :G :Gvdiffsplit master:%)
 nnoremap <leader>g :Ggrep -q <c-r><c-w>
