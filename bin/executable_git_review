@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# Review git branch in a subshell, vim+fugitive command included
+
+# USAGE: git review <branch> [base]
+#        (base defaults to origin/master)
+
+# Combine with completion: 
+#     _git_review () { __git_complete_refs --mode=heads; } 
+
+# Start a subshell so that declared functions can be dropped by `exit`
+(
+    # Move to dedicated review worktree if specified
+    if [ -n "$REVIEW_WORKTREE" ]; then
+        cd "$REVIEW_WORKTREE"
+    fi
+
+    git switch -d "origin/$1"    # avoid local copy of branch
+
+    YELLOW="\e[33m"
+    RESET="\e[0m"
+    export branch="$1"
+    export base="${2:-origin/master}"
+    echo -e "Reviewing branch $YELLOW$branch$RESET merged to $base"
+    echo    "-----------------------------------------------------"
+    d() { git diff --merge-base $base --stat ; }
+    l() { git log "$base..HEAD" --oneline ; }
+    r() { nvim -c "GcLog $base..HEAD" -c clast ; }
+
+    l  # display log
+
+    declare -fx d l r
+
+    echo "Available variables:"
+    echo "  \$branch = $branch"
+    echo "  \$base   = $base"
+    echo "Available functions:"
+    echo "  (l)og"
+    echo "  (d)iff"
+    echo "  (r)eview in vim"
+
+    # Switch to interactive mode
+    exec bash -i
+)
