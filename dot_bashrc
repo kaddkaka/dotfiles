@@ -26,9 +26,10 @@ shopt -s cmdhist     # save multi-line commands in one history entry
 shopt -s checkwinsize  # check window size after each cmd, update LINES COLUMNS
 shopt -s globstar  # let "**" expansion match files and 0+ (sub)directories
 
-alias gf='git fetch'
+alias gf='git fetch -p'
 alias gs='git status'
 alias gd='git diff'
+alias gdw='git diff --word-diff'
 alias ga='git add -u'
 
 alias woman='MANPAGER="nvim +Man!" man'
@@ -102,8 +103,10 @@ export CCACHE_DIR=/local/ccache
 export DISTCC_DIR=/local/distcc
 export USE_DISTCC=1
 
-# completion for git-jump from git contrib folder
+# completion for git subcommands (git-jump is from git contrib folder)
 _git_jump() { __gitcomp "diff merge grep ws" "" "$cur"; }
+_git_review () { __git_complete_refs ; }
+complete -F _git_review git-review
 
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
