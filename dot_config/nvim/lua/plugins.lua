@@ -1,12 +1,5 @@
 -- Setup for plugins
 
---local ts = require('telescope')
---ts.setup { extensions = { fzf = {
---  override_generic_sorter = true,
---  override_file_sorter = true,
---}}}
---ts.load_extension('fzf')
-
 vim.lsp.config('*',
   { on_attach = function(client) client.server_capabilities.semanticTokensProvider = nil end })
 -- This is coupled with config files:
