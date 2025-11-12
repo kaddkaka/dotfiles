@@ -11,10 +11,10 @@
 #umask 022
 
 # Include paths if they exist
-paths=("$HOME/bin",
-       "$HOME/.local/bin",)
+paths=("$HOME/bin"
+       "$HOME/.local/bin")
 for p in "${paths[@]}"; do
-    if [ -d "$p"] ; then
+    if [ -d "$p" ] ; then
         PATH="$p:$PATH"
     fi
 done
