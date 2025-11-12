@@ -1,7 +1,13 @@
 -- Setup for plugins
 
-vim.lsp.config('*',
-  { on_attach = function(client) client.server_capabilities.semanticTokensProvider = nil end })
+-- Remove semantic tokens for all LSPs as they are annoying to disable, and (rarely) very slow
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
+})
+
 -- This is coupled with config files:
 --   ~/.config/pycodestyle
 --   ~/.config/pylintrc
