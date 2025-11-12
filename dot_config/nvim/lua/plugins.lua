@@ -12,12 +12,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 --   ~/.config/pycodestyle
 --   ~/.config/pylintrc
 vim.lsp.config('pylsp', { settings = { pylsp = { plugins = { pylint = { enabled = true }}}}})
+vim.lsp.enable('pylsp')
+vim.lsp.enable('ruff')
+
 vim.lsp.config('clangd', { cmd = {"clangd", "--clang-tidy", "--background-index", "--cross-file-rename"}})
+vim.lsp.enable('clangd')
+
+vim.lsp.config('verible', { cmd = {"verible-verilog-ls", "--push_diagnostic_notifications=false"}})
+vim.lsp.enable('verible')
 
 --vim.lsp.enable('nimls')
 vim.lsp.enable('zls')
-vim.lsp.enable('pylsp')
-vim.lsp.enable('clangd')
 
 vim.lsp.config('rust_analyzer', { settings = {
   ["rust-analyzer"] = {
