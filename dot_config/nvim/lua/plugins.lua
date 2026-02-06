@@ -21,6 +21,9 @@ vim.lsp.enable('clangd')
 vim.lsp.config('verible', { cmd = {"verible-verilog-ls", "--push_diagnostic_notifications=false"}})
 vim.lsp.enable('verible')
 
+vim.lsp.config('verible', { cmd = {"verible-verilog-ls", "--rules_config_search", "--nopush_diagnostic_notifications"}})
+vim.lsp.enable('verible')
+
 --vim.lsp.enable('nimls')
 vim.lsp.enable('zls')
 
